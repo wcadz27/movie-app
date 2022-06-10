@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="flex p-4 w-full items-center z-[100]">
+    <div className="absolute flex p-4 w-full items-center z-[48]">
       {/* Play icon goes in this line */}
       <Link to="/">
         <h1 className="text-blue-600 text-4xl font-bold cursor-pointer">
@@ -16,7 +16,7 @@ const Navbar = () => {
         <li className="text-white cursor-pointer">TV Series</li>
       </ul>
       <div className="ml-auto">
-        <Link to="/login">
+        <Link to="/signin">
           <button className="text-white cursor-pointer mr-2">Sign In</button>
         </Link>
         <Link to="/signup">

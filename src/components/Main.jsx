@@ -26,7 +26,7 @@ const Main = () => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="absolute w-full top-[20%] p-4 md:pd-8">
+      <div className="absolute w-full top-[25%] p-4 md:pd-8">
         <h1 className="text-3xl md:text-5xl font-bold">
           {randomPopularMovie?.title}
         </h1>

@@ -2,22 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import requests from "../Requests";
-import { UserAuth } from "../context/AuthContext";
 
-const Signup = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { user, signUp } = UserAuth();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await signUp(email, password);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+const Signin = () => {
   const [movies, setMovies] = useState([]);
 
   //Select movie in random so main page displays a different popular movie everytime the page loads
@@ -41,41 +27,37 @@ const Signup = () => {
         <div className="h-full w-full z-50 flex flex-col">
           <div className="relative w-[450px] h-[600px] m-auto bg-black/75 text-white rounded-2xl">
             <div className="max-w-[320px] mx-auto py-24">
-              <h1 className="text-3xl font-bold">Sign up</h1>
-              <form
-                onSubmit={handleSubmit}
-                className="w-full flex flex-col py-4"
-              >
+              <h1 className="text-3xl font-bold">Sign in</h1>
+              <form action="" className="w-full flex flex-col py-4">
                 <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="p-3 my-2 rounded-lg focus:outline-blue-500 bg-black/60 border-2 border-gray-500"
+                  className="p-3 my-2 rounded-lg focus:outline-blue-500"
                   type="email"
                   placeholder="Email"
                   autoComplete="email"
                 />
                 <input
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="p-3 my-2 rounded-lg focus:outline-blue-500 bg-black/60 border-2 border-gray-500"
+                  className="p-3 my-2 rounded-lg focus:outline-blue-500"
                   type="password"
                   placeholder="Password"
                   autoComplete="current-password"
                 />
-                <input
-                  className="p-3 my-2 rounded-lg focus:outline-blue-500"
-                  type="password"
-                  placeholder="Re-enter password"
-                  autoComplete="current-password"
-                />
+                <div className="flex items-baseline mt-3">
+                  <input type="checkbox" />
+                  <span className="ml-4">Remember me</span>
+                </div>
                 <button
                   className="bg-blue-500 rounded-lg py-2 mt-10"
                   type="submit"
                 >
-                  Sign up
+                  Sign in
                 </button>
               </form>
               <div className="text-center mt-3">
                 <p>
-                  Have an account? <Link to="/signin">Sign in</Link>
+                  Don't have an account? <Link to="/signup">Sign up</Link>
+                </p>
+                <p>
+                  <a href="">Forgot password?</a>
                 </p>
               </div>
             </div>
@@ -86,4 +68,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signin;

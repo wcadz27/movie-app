@@ -21,7 +21,7 @@ export function AuthContextProvider({ children }) {
   }
 
   function logOut() {
-    return signOut;
+    return signOut(auth);
   }
 
   //Only runs once when the components mount to check if the user has been logged in or not

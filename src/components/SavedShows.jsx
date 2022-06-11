@@ -27,6 +27,17 @@ const SavedShows = () => {
     });
   }, [user?.email]);
 
+  const movieRef = doc(db, "users", `${user?.email}`);
+  const deleteShow = async (passedID) => {
+    try {
+      const result = movies.filter((item) => item.id !== passedID);
+      await updateDoc(movieRef, {
+        savedShows: result,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div
       className="relative ml-8 group"
@@ -42,8 +53,9 @@ const SavedShows = () => {
         id={"slider"}
         className="relative flex w-full flex-nowrap overflow-x-scroll scroll-smooth scrollbar-hide"
       >
-        {movies.map((item, id) => (
+        {movies.map((item) => (
           <div
+            key={item.id}
             className="relative w-[160px] sm:w-[200px] md:w-[240px] lg:w-[200px] p-2"
             /* className="flex w-full h-full cursor-pointer" */
           >
@@ -54,9 +66,12 @@ const SavedShows = () => {
             />
             <div className="flex items-center justify-center absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 rounded-2xl cursor-pointer">
               <PlayIcon />
-            </div>
-            <div>
-              <AiOutlineClose className="" />
+              <div>
+                <AiOutlineClose
+                  onClick={() => deleteShow(item.id)}
+                  className="absolute text-gray-300 top-4 right-4"
+                />
+              </div>
             </div>
           </div>
         ))}

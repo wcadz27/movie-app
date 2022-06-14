@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import { BsChevronDown } from "react-icons/bs";
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
@@ -15,14 +16,35 @@ const Navbar = () => {
   };
 
   return (
-    <div className="absolute flex p-4 w-full items-center z-[48]">
+    <div className="fixed flex p-4 w-full items-center z-[48]">
       {/* Play icon goes in this line */}
       <Link to="/">
         <h1 className="text-blue-600 text-4xl font-bold cursor-pointer">
-          wMovies
+          bbMovies
         </h1>
       </Link>
-      <ul className="flex items-center ml-6">
+      <div className="group relative dropdown ml-5 md:hidden cursor-pointer tracking-wide text-white">
+        <div className="flex items-center">
+          <a>Browse</a>
+          <span className="ml-3">
+            <BsChevronDown />
+          </span>
+        </div>
+        <div className="group-hover:block dropdown-menu absolute hidden h-auto bg-gray-800 rounded-md">
+          <ul className="top-0 w-[8.25rem] flex flex-col text-left">
+            <li className="block pl-2 py-2 text-white cursor-pointer hover:bg-gray-400">
+              Home
+            </li>
+            <li className="block pl-2 py-2 text-white cursor-pointer my-2 hover:bg-gray-400">
+              Movies
+            </li>
+            <li className="block pl-2 py-2 text-white cursor-pointer hover:bg-gray-400">
+              TV Series
+            </li>
+          </ul>
+        </div>
+      </div>
+      <ul className="items-center ml-6 hidden md:flex">
         <li className="text-white cursor-pointer">Home</li>
         <li className="text-white cursor-pointer ml-2 mr-2">Movies</li>
         <li className="text-white cursor-pointer">TV Series</li>

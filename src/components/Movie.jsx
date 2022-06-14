@@ -29,13 +29,13 @@ const Movie = ({ item }) => {
   };
 
   return (
-    <div /*  */>
+    <div className="flex flex-col w-full h-auto">
       <div
-        className="relative w-[160px] sm:w-[200px] md:w-[240px] lg:w-[200px] p-2"
+        className="relative w-[200px] h-auto p-2"
         /* className="flex w-full h-full cursor-pointer" */
       >
         <img
-          className="rounded-2xl cursor-pointer"
+          className="rounded-2xl cursor-pointer h-auto w-full"
           src={`https://image.tmdb.org/t/p/w500/${item?.poster_path}`}
           alt={item?.title}
         />

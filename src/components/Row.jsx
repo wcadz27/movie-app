@@ -28,18 +28,18 @@ const Row = ({ title, fetchURL, rowID }) => {
     <>
       <h2 className="text-white font-bold md:text-xl p-4">{title}</h2>
       <div
-        className="relative ml-8 group"
+        className="relative group w-full h-auto"
         /* className="flex" */
         /* className="flex relative items-center overflow-x-scroll scroll-smooth scrollbar scrollbar-hide group" */
       >
         <MdChevronLeft
           onClick={slideLeft}
           size={40}
-          className="bg-white rounded-full top-[130px] absolute opacity-50 hover:opacity-100 cursor-pointer z-10 group-hover:block hidden md:top-[155px]"
+          className="bg-white top-[35%] rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 group-hover:block hidden"
         />
         <div
           id={"slider" + rowID}
-          className="relative flex w-full flex-nowrap overflow-x-scroll scroll-smooth scrollbar-hide"
+          className="relative flex w-full h-auto overflow-x-scroll scroll-smooth scrollbar-hide"
         >
           {movies.map((item, id) => (
             <Movie key={id} item={item} />
@@ -48,7 +48,7 @@ const Row = ({ title, fetchURL, rowID }) => {
         <MdChevronRight
           onClick={slideRight}
           size={40}
-          className="bg-white rounded-full absolute top-[130px] right-0 opacity-50 hover:opacity-100 cursor-pointer z-10 group-hover:block hidden md:top-[155px]"
+          className="bg-white top-[35%] rounded-full absolute right-0 opacity-50 hover:opacity-100 cursor-pointer z-10 group-hover:block hidden"
         />
       </div>
     </>

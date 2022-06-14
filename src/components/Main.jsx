@@ -17,7 +17,7 @@ const Main = () => {
   console.log(randomPopularMovie);
 
   return (
-    <div className="w-full h-[550px] text-white">
+    <div className="w-full h-[550px] text-white flex justify-center items-center">
       <div className="w-full h-full">
         <div className="absolute w-full h-[550px] bg-gradient-to-r from-black"></div>
         <img
@@ -26,7 +26,7 @@ const Main = () => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="absolute w-full top-[25%] p-4 md:pd-8">
+      <div className="absolute w-full p-4 md:pd-8">
         <h1 className="text-3xl md:text-5xl font-bold">
           {randomPopularMovie?.title}
         </h1>
@@ -40,7 +40,7 @@ const Main = () => {
           <p className="my-2 text-gray-400 text-sm">
             Released: {randomPopularMovie?.release_date}
           </p>
-          <p className="w-[40rem] lg:w-[50rem]">
+          <p className="sm:w-[85%] sm:text-xs md:text-base lg:text-lg md:w-[65%] lg:w-[50%]">
             {randomPopularMovie?.overview}
           </p>
         </div>

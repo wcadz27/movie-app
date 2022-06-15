@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed flex p-4 w-full items-center z-[48]">
+    <div className="fixed flex p-4 w-full items-center z-[48] active:bg-black">
       {/* Play icon goes in this line */}
       <Link to="/">
         <h1 className="text-blue-600 text-4xl font-bold cursor-pointer">

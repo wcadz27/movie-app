@@ -29,9 +29,9 @@ const Movie = ({ item }) => {
   };
 
   return (
-    <div className="flex flex-col w-full h-auto">
+    <div className="flex relative flex-col w-full h-auto">
       <div
-        className="relative w-[200px] h-auto p-2"
+        className="relative min-w-[200px] h-auto p-2"
         /* className="flex w-full h-full cursor-pointer" */
       >
         <img

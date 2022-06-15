@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import requests from "../Requests";
 import { UserAuth } from "../context/AuthContext";
 
 const Signin = () => {
@@ -24,27 +23,19 @@ const Signin = () => {
     }
   };
 
-  //Select movie in random so main page displays a different popular movie everytime the page loads
-  const randomPopularMovie = movies[Math.floor(Math.random() * movies.length)];
-
-  useEffect(() => {
-    axios.get(requests.requestPopular).then((response) => {
-      setMovies(response.data.results);
-    });
-  }, []);
   return (
     <>
       <div className="w-full h-screen relative">
         {" "}
         <img
-          src={`https://image.tmdb.org/t/p/original/${randomPopularMovie?.backdrop_path}`}
-          alt={randomPopularMovie?.title}
+          src="https://img.freepik.com/free-vector/seamless-various-film-cinema-graphics-light-blue-background-design_1284-42060.jpg?w=740&t=st=1655297710~exp=1655298310~hmac=973df4f9d248dab01b09a9c6ceaa1b169ae35dd360ace9f2a1e1f3a1c2bb2442"
+          alt="movie-backdrop"
           className="hidden absolute sm:block w-full h-full object-cover"
         />
         <div className="absolute w-full h-screen bg-black/60"></div>
         <div className="h-full w-full z-50 flex flex-col">
-          <div className="relative w-[450px] h-[600px] m-auto bg-black/75 text-white rounded-2xl">
-            <div className="max-w-[320px] mx-auto py-24">
+          <div className="flex justify-center items-center relative w-[450px] h-[500px] m-auto bg-black/75 text-white rounded-2xl">
+            <div className="w-[350px]">
               <h1 className="text-3xl font-bold">Sign in</h1>
               {error ? <p className="p-2 mt-4 bg-red-400">{error}</p> : null}
               <form

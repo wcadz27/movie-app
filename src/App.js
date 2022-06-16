@@ -4,8 +4,10 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthContextProvider } from "./context/AuthContext";
 import Account from "./pages/Account";
 import Home from "./pages/Home";
+import Movies from "./pages/Movies";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
+import TVSeries from "./pages/TVSeries";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/tvseries" element={<TVSeries />} />
         </Routes>
       </AuthContextProvider>
     </>

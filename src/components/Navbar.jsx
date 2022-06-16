@@ -32,22 +32,38 @@ const Navbar = () => {
         </div>
         <div className="group-hover:block dropdown-menu absolute hidden h-auto bg-gray-800 rounded-md">
           <ul className="top-0 w-[8.25rem] flex flex-col text-left">
-            <li className="block pl-2 py-2 text-white cursor-pointer hover:bg-gray-400">
-              Home
-            </li>
+            <Link to="/">
+              <li className="block pl-2 py-2 text-white cursor-pointer hover:bg-gray-400">
+                Home
+              </li>
+            </Link>
             <li className="block pl-2 py-2 text-white cursor-pointer my-2 hover:bg-gray-400">
-              Movies
+              Genre
             </li>
-            <li className="block pl-2 py-2 text-white cursor-pointer hover:bg-gray-400">
-              TV Series
-            </li>
+            <Link to="/movies">
+              <li className="block pl-2 py-2 text-white cursor-pointer my-2 hover:bg-gray-400">
+                Movies
+              </li>
+            </Link>
+            <Link to="/tvseries">
+              <li className="block pl-2 py-2 text-white cursor-pointer hover:bg-gray-400">
+                TV Series
+              </li>
+            </Link>
           </ul>
         </div>
       </div>
       <ul className="items-center ml-6 hidden md:flex">
-        <li className="text-white cursor-pointer">Home</li>
-        <li className="text-white cursor-pointer ml-2 mr-2">Movies</li>
-        <li className="text-white cursor-pointer">TV Series</li>
+        <Link to="/">
+          <li className="text-white cursor-pointer">Home</li>
+        </Link>
+        <li className="text-white cursor-pointer ml-2 mr-2">Genre</li>
+        <Link to="/movies">
+          <li className="text-white cursor-pointer mr-2">Movies</li>
+        </Link>
+        <Link to="/tvseries">
+          <li className="text-white cursor-pointer">TV Series</li>
+        </Link>
       </ul>
       {user?.email ? (
         <div className="ml-auto">

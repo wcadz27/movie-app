@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import requests from "../Requests";
+import MovieInfo from "./MovieInfo";
 
 const Main = () => {
   const [movies, setMovies] = useState([]);
@@ -31,11 +32,15 @@ const Main = () => {
           {randomPopularMovie?.title}
         </h1>
         <div>
-          <button className="my-4 border text-white py-2 px-4 rounded-3xl border-blue-600 bg-blue-600 shadow-lg">
-            Watch now
+          <button
+            type="button"
+            /* onClick={() => toggleModal(true)} */
+            className="my-4 border text-white py-2 px-4 rounded-3xl border-blue-600 bg-blue-600 shadow-lg"
+          >
+            Watch trailer
           </button>
           <button className="my-2 border text-white py-2 px-4 rounded-3xl ml-4">
-            Watch trailer
+            More info
           </button>
           <p className="my-2 text-gray-400 text-sm">
             Released: {randomPopularMovie?.release_date}

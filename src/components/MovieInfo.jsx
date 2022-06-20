@@ -1,62 +1,74 @@
 import React, { useState } from "react";
 
-const MovieInfo = () => {
-  const [showModal, setShowModal] = useState(false);
+const MovieInfo = ({ setShowModal }) => {
   // take out usestate and conditional statement and maybe try putting them
   // in home component, use this for movieinfo only
   return (
     <>
-      {showModal ? (
-        <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">Modal Title</h3>
-                  <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
-                  >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                      ×
-                    </span>
-                  </button>
+      <div className="fixed z-50 inset-0 md:my-5 flex flex-col bg-black h-full md:h-auto md:w-[95%] mx-auto overflow-x-hidden overflow-y-auto outline-none">
+        <div className="h-full w-full">
+          <div className="relative w-full h-[25%] md:h-[600px] text-white flex">
+            <div className="w-full h-full overflow-hidden">
+              <div className="absolute w-full h-full md:h-[600px] bg-gradient-to-t from-black ">
+                <button
+                  className="absolute top-0 right-0 text-white bg-blue-600 mr-4 mt-4 text-[0.6rem]"
+                  onClick={() => setShowModal(false)}
+                >
+                  Close
+                </button>
+              </div>
+              <img
+                src={`https://image.tmdb.org/t/p/original//9bbxqz1iPEfZN9Xi2ZjJhkp5JRo.jpg`}
+                /*               alt={randomPopularMovie?.title} */
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          <div className="absolute flex w-[80%]">
+            <div className="flex">
+              <div className="hidden md:block h-auto w-[65%]">
+                <img
+                  className="w-full h-auto object-cover"
+                  src={`https://image.tmdb.org/t/p/original//7qop80YfuO0BwJa1uXk1DXUUEwv.jpg`}
+                  alt=""
+                />
+              </div>
+              <div className="text-white ml-5 mt-[-3rem] w-full">
+                <h1 className="text-4xl font-bold">The Bad Guys</h1>
+                <ul className="mt-1 text-[0.5rem]">
+                  <li className="border-2 inline rounded-xl px-2">Comedy</li>
+                </ul>
+                <p className="text-[0.25em] mt-2 mr-3">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Veritatis est suscipit at dolore exercitationem? A ipsam
+                  itaque, accusantium explicabo ad veritatis quasi!
+                  Necessitatibus deserunt reiciendis similique! Quia molestiae
+                  minus nihil!
+                </p>
+                <div className="mt-3">
+                  <ul>
+                    <h2 className="text-[0.7rem] font-semibold">Casts</h2>
+                    <li className="text-[0.7rem] font-semibold">Actor</li>
+                  </ul>
                 </div>
-                {/*body*/}
-                <div className="relative p-6 flex-auto">
-                  <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                    I always felt like I could do anything. That’s the main
-                    thing people are controlled by! Thoughts- their perception
-                    of themselves! They're slowed down by their perception of
-                    themselves. If you're taught you can’t do anything, you
-                    won’t do anything. I was taught I could do everything.
-                  </p>
-                </div>
-                {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Close
-                  </button>
-                  <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Save Changes
-                  </button>
+                <div className="text-white">
+                  <div>
+                    <h3 className="text-[0.7rem] font-semibold">Trailer</h3>
+                    <div></div>
+                  </div>
+                  <div>
+                    <h3 className="text-[0.7rem] font-semibold">
+                      Similar shows
+                    </h3>
+                    <div></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
-      ) : null}
+        </div>
+      </div>
+      <div className="hidden md:block fixed opacity-50  inset-0 z-40 bg-black"></div>
     </>
   );
 };

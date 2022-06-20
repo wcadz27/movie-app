@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import requests from "../Requests";
 
-const Main = () => {
+const Main = ({ setShowModal }) => {
   const [movies, setMovies] = useState([]);
 
   //Select movie in random so main page displays a different popular movie everytime the page loads
@@ -33,7 +33,7 @@ const Main = () => {
         <div>
           <button
             type="button"
-            /* onClick={() => toggleModal(true)} */
+            onClick={() => setShowModal(true)}
             className="my-4 border text-white py-2 px-4 rounded-3xl border-blue-600 bg-blue-600 shadow-lg"
           >
             Watch trailer

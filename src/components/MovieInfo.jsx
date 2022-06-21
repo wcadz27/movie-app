@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const MovieInfo = ({ setShowModal, showModal }) => {
-  // take out usestate and conditional statement and maybe try putting them
-  // in home component, use this for movieinfo only
+const MovieInfo = ({ setShowModal, showModal, fetchCastsURL }) => {
+  const [casts, setCasts] = useState([]);
+
+  useEffect(() => {
+    axios.get(fetchCastsURL).then((response) => {
+      setCasts(response.data.cast);
+    });
+  }, [fetchCastsURL]);
+
+  console.log(casts);
+
   return (
     <>
       <div className="fixed z-50 inset-0 md:my-5 flex flex-col bg-black h-full md:h-auto md:w-[95%] mx-auto overflow-x-hidden overflow-y-auto outline-none">
@@ -46,8 +55,8 @@ const MovieInfo = ({ setShowModal, showModal }) => {
                   minus nihil!
                 </p>
                 <div className="mt-3">
+                  <h2 className="text-[0.7rem] font-semibold">Casts</h2>
                   <ul>
-                    <h2 className="text-[0.7rem] font-semibold">Casts</h2>
                     <li className="text-[0.7rem] font-semibold">Actor</li>
                   </ul>
                 </div>

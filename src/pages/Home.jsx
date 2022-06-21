@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import Main from "../components/Main";
 import MovieInfo from "../components/MovieInfo";
 import Row from "../components/Row";
-import requests from "../Requests";
+import { requests, key } from "../Requests";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(undefined);
   const [movies, setMovies] = useState([]);
+
+  const castsRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/credits?api_key=${key}&language=en-US`;
 
   //Select movie in random so main page displays a different popular movie everytime the page loads
   const randomPopularMovie = movies[Math.floor(Math.random() * movies.length)];
@@ -27,7 +29,11 @@ const Home = () => {
         randomPopularMovie={randomPopularMovie}
       />
       {showModal !== undefined ? (
-        <MovieInfo setShowModal={setShowModal} showModal={showModal} />
+        <MovieInfo
+          setShowModal={setShowModal}
+          showModal={showModal}
+          fetchCastsURL={castsRequest}
+        />
       ) : null}
       <Row
         setShowModal={setShowModal}

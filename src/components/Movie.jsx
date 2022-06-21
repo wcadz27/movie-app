@@ -5,7 +5,7 @@ import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
-const Movie = ({ item }) => {
+const Movie = ({ item, setShowModal }) => {
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
   const { user } = UserAuth();
@@ -31,6 +31,7 @@ const Movie = ({ item }) => {
   return (
     <div className="flex relative flex-col w-full h-auto">
       <div
+        onClick={() => setShowModal(item)}
         className="relative min-w-[200px] h-auto p-2"
         /* className="flex w-full h-full cursor-pointer" */
       >

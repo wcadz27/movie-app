@@ -1,19 +1,6 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import requests from "../Requests";
+import React from "react";
 
-const Main = ({ setShowModal }) => {
-  const [movies, setMovies] = useState([]);
-
-  //Select movie in random so main page displays a different popular movie everytime the page loads
-  const randomPopularMovie = movies[Math.floor(Math.random() * movies.length)];
-
-  useEffect(() => {
-    axios.get(requests.requestPopular).then((response) => {
-      setMovies(response.data.results);
-    });
-  }, []);
-
+const Main = ({ setShowModal, randomPopularMovie }) => {
   console.log(randomPopularMovie);
 
   return (
@@ -33,7 +20,7 @@ const Main = ({ setShowModal }) => {
         <div>
           <button
             type="button"
-            onClick={() => setShowModal(true)}
+            onClick={() => setShowModal(randomPopularMovie)}
             className="my-4 border text-white py-2 px-4 rounded-3xl border-blue-600 bg-blue-600 shadow-lg"
           >
             Watch trailer

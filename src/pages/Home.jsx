@@ -1,21 +1,64 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Main from "../components/Main";
 import MovieInfo from "../components/MovieInfo";
 import Row from "../components/Row";
 import requests from "../Requests";
 
 const Home = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(undefined);
+  const [movies, setMovies] = useState([]);
+
+  //Select movie in random so main page displays a different popular movie everytime the page loads
+  const randomPopularMovie = movies[Math.floor(Math.random() * movies.length)];
+
+  useEffect(() => {
+    axios.get(requests.requestPopular).then((response) => {
+      setMovies(response.data.results);
+    });
+  }, []);
+
+  console.log(showModal);
 
   return (
     <>
-      <Main setShowModal={setShowModal} />
-      {showModal ? <MovieInfo setShowModal={setShowModal} /> : null}
-      <Row rowID="1" title="Upcoming" fetchURL={requests.requestUpcoming} />
-      <Row rowID="2" title="Popular" fetchURL={requests.requestPopular} />
-      <Row rowID="3" title="Trending" fetchURL={requests.requestTrending} />
-      <Row rowID="4" title="Top Rated" fetchURL={requests.requestTopRated} />
-      <Row rowID="5" title="Horrors" fetchURL={requests.requestHorror} />
+      <Main
+        setShowModal={setShowModal}
+        randomPopularMovie={randomPopularMovie}
+      />
+      {showModal !== undefined ? (
+        <MovieInfo setShowModal={setShowModal} showModal={showModal} />
+      ) : null}
+      <Row
+        setShowModal={setShowModal}
+        rowID="2"
+        title="Popular"
+        fetchURL={requests.requestPopular}
+      />
+      <Row
+        setShowModal={setShowModal}
+        rowID="1"
+        title="Upcoming"
+        fetchURL={requests.requestUpcoming}
+      />
+      <Row
+        setShowModal={setShowModal}
+        rowID="3"
+        title="Trending"
+        fetchURL={requests.requestTrending}
+      />
+      <Row
+        setShowModal={setShowModal}
+        rowID="4"
+        title="Top Rated"
+        fetchURL={requests.requestTopRated}
+      />
+      <Row
+        setShowModal={setShowModal}
+        rowID="5"
+        title="Horrors"
+        fetchURL={requests.requestHorror}
+      />
     </>
   );
 };

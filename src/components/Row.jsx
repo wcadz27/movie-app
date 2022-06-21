@@ -4,7 +4,7 @@ import requests from "../Requests";
 import Movie from "./Movie";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
-const Row = ({ title, fetchURL, rowID }) => {
+const Row = ({ title, fetchURL, rowID, setShowModal }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Row = ({ title, fetchURL, rowID }) => {
           className="relative flex w-full h-auto overflow-x-scroll scroll-smooth scrollbar-hide"
         >
           {movies.map((item, id) => (
-            <Movie key={id} item={item} />
+            <Movie setShowModal={setShowModal} key={id} item={item} />
           ))}
         </div>
         <MdChevronRight

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const MovieInfo = ({ setShowModal }) => {
+const MovieInfo = ({ setShowModal, showModal }) => {
   // take out usestate and conditional statement and maybe try putting them
   // in home component, use this for movieinfo only
   return (
@@ -12,13 +12,13 @@ const MovieInfo = ({ setShowModal }) => {
               <div className="absolute w-full h-full md:h-[600px] bg-gradient-to-t from-black ">
                 <button
                   className="absolute top-0 right-0 text-white bg-blue-600 mr-4 mt-4 text-[0.6rem]"
-                  onClick={() => setShowModal(false)}
+                  onClick={() => setShowModal(undefined)}
                 >
                   Close
                 </button>
               </div>
               <img
-                src={`https://image.tmdb.org/t/p/original//9bbxqz1iPEfZN9Xi2ZjJhkp5JRo.jpg`}
+                src={`https://image.tmdb.org/t/p/original//${showModal?.backdrop_path}`}
                 /*               alt={randomPopularMovie?.title} */
                 className="w-full h-full object-cover"
               />
@@ -34,7 +34,7 @@ const MovieInfo = ({ setShowModal }) => {
                 />
               </div>
               <div className="text-white ml-5 mt-[-3rem] w-full">
-                <h1 className="text-4xl font-bold">The Bad Guys</h1>
+                <h1 className="text-4xl font-bold">{showModal.title}</h1>
                 <ul className="mt-1 text-[0.5rem]">
                   <li className="border-2 inline rounded-xl px-2">Comedy</li>
                 </ul>

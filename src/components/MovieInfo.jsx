@@ -1,16 +1,30 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import ReactPlayer from "react-player";
 
-const MovieInfo = ({ setShowModal, showModal, fetchCastsURL }) => {
+const MovieInfo = ({
+  setShowModal,
+  showModal,
+  fetchCastsURL,
+  fetchTrailerURL,
+}) => {
   const [casts, setCasts] = useState([]);
+  const [trailer, setTrailer] = useState([]);
 
   useEffect(() => {
     axios.get(fetchCastsURL).then((response) => {
       setCasts(response.data.cast);
     });
-  }, [fetchCastsURL]);
+    axios.get(fetchTrailerURL).then((response) => {
+      setTrailer(
+        response.data.results.filter((el) => {
+          return el.type === "Trailer";
+        })
+      );
+    });
+  }, [fetchCastsURL, fetchTrailerURL]);
 
-  console.log(casts);
+  console.log(trailer);
 
   return (
     <>
@@ -56,14 +70,33 @@ const MovieInfo = ({ setShowModal, showModal, fetchCastsURL }) => {
                 </p>
                 <div className="mt-3">
                   <h2 className="text-[0.7rem] font-semibold">Casts</h2>
-                  <ul>
-                    <li className="text-[0.7rem] font-semibold">Actor</li>
+                  <ul className="w-full h-auto flex flex-wrap gap-4">
+                    {casts.slice(0, 7).map((cast, id) => (
+                      <li key={id}>
+                        <div className="w-full h-auto">
+                          <div>
+                            <img
+                              src={`https://image.tmdb.org/t/p/original/${cast?.profile_path}`}
+                              alt={cast?.name}
+                              className="h-auto w-[3.5em]"
+                            />
+                          </div>
+                          <h4 className="text-[0.5rem]">{cast?.name}</h4>
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="text-white">
-                  <div>
+                  <div className="my-3">
                     <h3 className="text-[0.7rem] font-semibold">Trailer</h3>
-                    <div></div>
+                    <div className="w-full h-auto mt-2">
+                      <ReactPlayer
+                        width="auto"
+                        height="auto"
+                        url={`https://www.youtube.com/watch?v=${trailer[0]?.key}`}
+                      />
+                    </div>
                   </div>
                   <div>
                     <h3 className="text-[0.7rem] font-semibold">

@@ -11,6 +11,7 @@ const Home = () => {
 
   const castsRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/credits?api_key=${key}&language=en-US`;
   const trailerRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/videos?api_key=${key}&language=en-US`;
+  const similarMoviesRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/similar?api_key=${key}&language=en-US&page=1`;
 
   //Select movie in random so main page displays a different popular movie everytime the page loads
   const randomPopularMovie = movies[Math.floor(Math.random() * movies.length)];
@@ -35,6 +36,7 @@ const Home = () => {
           showModal={showModal}
           fetchCastsURL={castsRequest}
           fetchTrailerURL={trailerRequest}
+          fetchSimilarMoviesURL={similarMoviesRequest}
         />
       ) : null}
       <Row

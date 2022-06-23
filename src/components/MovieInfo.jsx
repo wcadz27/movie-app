@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
+import Row from "../components/Row";
 
 const MovieInfo = ({
   setShowModal,
   showModal,
   fetchCastsURL,
   fetchTrailerURL,
+  fetchSimilarMoviesURL,
 }) => {
   const [casts, setCasts] = useState([]);
   const [trailer, setTrailer] = useState([]);
@@ -87,22 +89,26 @@ const MovieInfo = ({
                     ))}
                   </ul>
                 </div>
-                <div className="text-white">
-                  <div className="my-3">
+                <div className="text-white flex flex-col">
+                  <div className="my-3 w-full h-auto">
                     <h3 className="text-[0.7rem] font-semibold">Trailer</h3>
-                    <div className="w-full h-auto mt-2">
+                    <div className="w-[80%] h-[100%] mt-2">
                       <ReactPlayer
-                        width="auto"
-                        height="auto"
+                        width="10em"
+                        height="5em"
                         url={`https://www.youtube.com/watch?v=${trailer[0]?.key}`}
                       />
                     </div>
                   </div>
-                  <div>
-                    <h3 className="text-[0.7rem] font-semibold">
-                      Similar shows
-                    </h3>
-                    <div></div>
+                  <div className="w-full h-full">
+                    <div>
+                      <Row
+                        setShowModal={setShowModal}
+                        rowID="1"
+                        title="Similar Shows"
+                        fetchURL={fetchSimilarMoviesURL}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

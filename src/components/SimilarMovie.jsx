@@ -29,9 +29,9 @@ const SimilarMovie = ({ movie, setShowModal }) => {
   };
 
   return (
-    <div className="relative inline-block">
+    <div className="relative inline-block" onClick={() => setShowModal(movie)}>
       <img
-        className="rounded-2xl h-auto min-w-[300px]"
+        className="rounded-2xl h-auto min-w-[100px]"
         src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
         alt={movie.name}
       />

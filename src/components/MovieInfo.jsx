@@ -1,7 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import ReactPlayer from "react-player";
-import Row from "../components/Row";
 import Player from "./Player";
 import SimilarMoviesRow from "./SimilarMoviesRow";
 
@@ -32,7 +30,7 @@ const MovieInfo = ({
 
   return (
     <>
-      <div className="fixed z-50 inset-0 md:my-5 w-full h-auto max-w-[95%] overflow-y-auto scrollbar-hide outline-none focus:outline-none mx-auto bg-black">
+      <div className="fixed z-50 inset-0 md:my-5 w-full h-auto md:w-[95%] overflow-y-auto scrollbar-hide outline-none focus:outline-none mx-auto bg-black">
         <div className="w-full h-auto md:h-[600px] text-white flex">
           <div className="w-full h-full">
             <div className="absolute w-full h-full md:h-[600px] bg-gradient-to-t from-black ">
@@ -57,9 +55,11 @@ const MovieInfo = ({
             alt=""
           />
         </div>
-        <div className="absolute flex flex-col w-auto text-white">
+        <div className="absolute flex flex-col w-[95vw] ml-2 text-white top-[11rem] pb-4">
           <div className="text-white">
-            <h1 className="text-4xl font-bold">{showModal.title}</h1>
+            <h1 className="text-4xl font-bold bottom-[20%]">
+              {showModal.title}
+            </h1>
             <ul className="mt-1 text-[0.5rem]">
               <li className="border-2 inline rounded-xl px-2">Comedy</li>
             </ul>
@@ -72,26 +72,26 @@ const MovieInfo = ({
           </div>
 
           <div className="mt-3">
-            <h2 className="text-[0.7rem] font-semibold">Casts</h2>
-            <ul className="w-full h-auto flex gap-4">
+            <h2 className="text-[0.7rem] font-semibold mb-3">Casts</h2>
+            <ul className="w-full h-auto flex flex-wrap items-center gap-y-2">
               {casts.slice(0, 7).map((cast, id) => (
-                <li key={id}>
-                  <div className="w-full h-auto">
-                    <div>
-                      <img
-                        src={`https://image.tmdb.org/t/p/original/${cast?.profile_path}`}
-                        alt={cast?.name}
-                        className="h-auto w-[4em]"
-                      />
-                    </div>
-                    <h4 className="text-[0.5rem]">{cast?.name}</h4>
+                <li key={id} className="">
+                  <div className="w-[5em] min-h-[120px] flex flex-col justify-start items-center">
+                    <img
+                      src={`https://image.tmdb.org/t/p/original/${cast?.profile_path}`}
+                      alt={cast?.name}
+                      className="h-auto w-[4em]"
+                    />
+                    <p className="text-[0.5rem] text-center mt-2">
+                      {cast?.name}
+                    </p>
                   </div>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="my-[5em] max-w-[600px] h-full">
-            <h3 className="text-[0.7rem] font-semibold">Trailer</h3>
+          <div className="my-4 max-w-[440px] h-full">
+            <h3 className="text-[0.7rem] font-semibold mb-3">Trailer</h3>
             <Player trailer={trailer} />
           </div>
           <SimilarMoviesRow

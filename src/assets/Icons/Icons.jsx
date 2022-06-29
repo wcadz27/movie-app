@@ -9,7 +9,7 @@ export function PlayIcon() {
       strokeMiterlimit="2"
       clipRule="evenodd"
       viewBox="0 0 500 500"
-      className="w-[5rem] h-[5rem] absolute"
+      className="w-[40%] h-auto absolute"
     >
       <path
         fill="url(#_Linear1)"

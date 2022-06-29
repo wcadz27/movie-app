@@ -8,3 +8,18 @@ body {
   background-color: #000000;
   font-family: "Montserrat", sans-serif;
 }
+
+* {
+  margin: 0;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.react-player {
+  top: 0;
+  left: 0;
+  position: absolute;
+}

@@ -18,19 +18,6 @@ const MovieInfo = ({
     showModal?.genre_ids.includes(element.id)
   );
 
-  /* const getGenre = () => {
-    // TODO: Fix: Add another for loop or map
-    console.log(showModal);
-    for (let i = 0; i < genres.length; i++) {
-      if (genres[i].id === showModal.genre_ids[i]) {
-        console.log(genres[i]);
-        return (
-          
-        );
-      }
-    }
-  }; */
-
   useEffect(() => {
     axios.get(fetchCastsURL).then((response) => {
       setCasts(response.data.cast);
@@ -59,7 +46,7 @@ const MovieInfo = ({
             </div>
             <img
               src={`https://image.tmdb.org/t/p/original//${showModal?.backdrop_path}`}
-              /*               alt={randomPopularMovie?.title} */
+              alt={showModal?.title}
               className="w-full h-full object-cover"
             />
           </div>
@@ -96,10 +83,12 @@ const MovieInfo = ({
           </div>
 
           <div className="mt-[15%] md:mb-[2rem] w-[90vw]">
-            <h2 className="text-[0.7rem] font-semibold mb-3">Casts</h2>
+            <h2 className="text-[0.7rem] md:text-[1.3em] font-semibold mb-3">
+              Casts
+            </h2>
             <ul className="w-full md:overflow-x-auto md:scrollbar-hide h-full flex flex-wrap md:flex-nowrap gap-y-5">
               {casts.slice(0, 7).map((cast, id) => (
-                <li key={id} className="">
+                <li key={id}>
                   <div className="w-[5em] md:w-[12em] h-[120px] md:h-auto flex flex-col items-center">
                     <img
                       src={`https://image.tmdb.org/t/p/original/${cast?.profile_path}`}
@@ -115,7 +104,7 @@ const MovieInfo = ({
             </ul>
           </div>
           <div className="w-full flex flex-col h-auto items-center">
-            <h3 className="self-start text-[0.7rem] font-semibold mb-3 text-white">
+            <h3 className="self-start text-[0.7rem] md:text-[1.3em] font-semibold mb-3 text-white">
               Trailer
             </h3>
             <div className="my-4 w-full md:max-w-[85vw] 2xl:max-w-[60vw] h-auto">

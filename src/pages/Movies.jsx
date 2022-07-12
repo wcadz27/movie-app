@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { requests } from "../Requests";
+import { requests, key } from "../Requests";
 import Row from "../components/Row";
 import axios from "axios";
+import MovieInfo from "../components/MovieInfo";
 
 const Movies = () => {
+  const [showModal, setShowModal] = useState(undefined);
+  const castsRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/credits?api_key=${key}&language=en-US`;
+  const trailerRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/videos?api_key=${key}&language=en-US`;
+  const similarMoviesRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/similar?api_key=${key}&language=en-US&page=1`;
+
   const [movies, setMovies] = useState([]);
 
   //Select movie in random so main page displays a different popular movie everytime the page loads
@@ -35,7 +41,7 @@ const Movies = () => {
           <div>
             <button
               type="button"
-              /* onClick={() => toggleModal(true)} */
+              onClick={() => setShowModal(randomPopularMovie)}
               className="my-4 border text-white py-2 px-4 rounded-3xl border-blue-600 bg-blue-600 shadow-lg"
             >
               Watch trailer
@@ -52,9 +58,33 @@ const Movies = () => {
           </div>
         </div>
       </div>
-      <Row rowID="1" title="Upcoming" fetchURL={requests.requestUpcoming} />
-      <Row rowID="1" title="Upcoming" fetchURL={requests.requestUpcoming} />
-      <Row rowID="1" title="Upcoming" fetchURL={requests.requestUpcoming} />
+      {showModal !== undefined ? (
+        <MovieInfo
+          setShowModal={setShowModal}
+          showModal={showModal}
+          fetchCastsURL={castsRequest}
+          fetchTrailerURL={trailerRequest}
+          fetchSimilarMoviesURL={similarMoviesRequest}
+        />
+      ) : null}
+      <Row
+        setShowModal={setShowModal}
+        rowID="1"
+        title="Upcoming"
+        fetchURL={requests.requestUpcoming}
+      />
+      <Row
+        setShowModal={setShowModal}
+        rowID="1"
+        title="Upcoming"
+        fetchURL={requests.requestUpcoming}
+      />
+      <Row
+        setShowModal={setShowModal}
+        rowID="1"
+        title="Upcoming"
+        fetchURL={requests.requestUpcoming}
+      />
     </>
   );
 };

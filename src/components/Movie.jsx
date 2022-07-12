@@ -32,7 +32,7 @@ const Movie = ({ item, setShowModal }) => {
     <div className="flex relative flex-col w-full h-auto">
       <div
         onClick={() => setShowModal(item)}
-        className="relative min-w-[200px] h-auto p-2"
+        className="relative min-w-[180px] md:min-w-[220px] h-auto p-2"
         /* className="flex w-full h-full cursor-pointer" */
       >
         <img

@@ -10,6 +10,10 @@ const Movie = ({ item, setShowModal }) => {
   const [saved, setSaved] = useState(false);
   const { user } = UserAuth();
 
+  if (item.name) {
+    item.title = item.name;
+  }
+
   const movieID = doc(db, "users", `${user?.email}`);
 
   const saveShow = async () => {
@@ -30,13 +34,14 @@ const Movie = ({ item, setShowModal }) => {
 
   return (
     <div className="flex relative flex-col w-full h-auto">
+      <div></div>
       <div
         onClick={() => setShowModal(item)}
-        className="relative min-w-[180px] md:min-w-[220px] h-auto p-2"
+        className="relative min-w-[180px] md:min-w-[220px] min-h-[260px] md:min-h-[320px] h-auto p-2"
         /* className="flex w-full h-full cursor-pointer" */
       >
         <img
-          className="rounded-2xl cursor-pointer h-auto w-full"
+          className="rounded-2xl cursor-pointer md:min-h-[320px] min-h-[260px] h-auto w-full"
           src={`https://image.tmdb.org/t/p/w500/${item?.poster_path}`}
           alt={item?.title}
         />

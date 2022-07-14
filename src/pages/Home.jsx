@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Main from "../components/Main";
 import MovieInfo from "../components/MovieInfo";
 import Row from "../components/Row";
-import { requests, key } from "../Requests";
+import { requests, key, tvSeriesRequests } from "../Requests";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(undefined);
@@ -15,6 +15,12 @@ const Home = () => {
 
   //Select movie in random so main page displays a different popular movie everytime the page loads
   const randomPopularMovie = movies[Math.floor(Math.random() * movies.length)];
+
+  const tvSeriesTitles = [
+    "Popular TV Series",
+    "Top Rated TV Series",
+    "On Going TV Series",
+  ];
 
   useEffect(() => {
     axios.get(requests.requestPopular).then((response) => {
@@ -69,6 +75,14 @@ const Home = () => {
         title="Horrors"
         fetchURL={requests.requestHorror}
       />
+      {Object.keys(tvSeriesRequests).map((el, index) => (
+        <Row
+          setShowModal={setShowModal}
+          rowID={`${index + 5}`}
+          title={tvSeriesTitles[index]}
+          fetchURL={tvSeriesRequests[el]}
+        />
+      ))}
     </>
   );
 };

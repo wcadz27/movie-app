@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { BsChevronDown } from "react-icons/bs";
+import { genres } from "../genres";
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
@@ -38,7 +39,8 @@ const Navbar = () => {
               </li>
             </Link>
             <li className="block pl-2 py-2 text-white cursor-pointer my-2 hover:bg-gray-400">
-              Genre
+              <p>Genre</p>
+              <div className=""></div>
             </li>
             <Link to="/movies">
               <li className="block pl-2 py-2 text-white cursor-pointer my-2 hover:bg-gray-400">
@@ -57,7 +59,19 @@ const Navbar = () => {
         <Link to="/">
           <li className="text-white cursor-pointer">Home</li>
         </Link>
-        <li className="text-white cursor-pointer ml-2 mr-2">Genre</li>
+        <li className="flex flex-col text-white cursor-pointer ml-2 mr-2">
+          <p className="peer">Genre</p>
+          <ul className="absolute hidden peer-hover:flex hover:flex w-[500px] gap-3 flex-wrap bg-black mt-[2rem] p-[2rem]">
+            {Object.keys(genres).map((genre, index) => (
+              <Link
+                to={`${genres[index].name}`}
+                className="self-center w-[0.5em] m-[5px] flex-grow-1 flex-shrink-0 basis-[28%]"
+              >
+                <li>{genres[index].name}</li>
+              </Link>
+            ))}
+          </ul>
+        </li>
         <Link to="/movies">
           <li className="text-white cursor-pointer mr-2">Movies</li>
         </Link>

@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { BsChevronDown } from "react-icons/bs";
-import { genres } from "../genres";
+import { genres, filteredAllGenres } from "../genres";
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
@@ -61,16 +61,18 @@ const Navbar = () => {
         </Link>
         <li className="flex flex-col text-white cursor-pointer ml-2 mr-2">
           <p className="peer">Genre</p>
-          <ul className="absolute hidden peer-hover:flex hover:flex w-[500px] gap-3 flex-wrap bg-black mt-[2rem] p-[2rem]">
-            {Object.keys(genres).map((genre, index) => (
-              <Link
-                to={`${genres[index].name}`}
-                className="self-center w-[0.5em] m-[5px] flex-grow-1 flex-shrink-0 basis-[28%]"
-              >
-                <li>{genres[index].name}</li>
-              </Link>
-            ))}
-          </ul>
+          <div className="absolute hidden peer-hover:flex hover:flex w-[600px]">
+            <ul className="w-[500px] flex gap-3 flex-wrap bg-gray-800 mt-[1.75rem] p-[2rem]">
+              {filteredAllGenres.map((genre, index) => (
+                <Link
+                  to={`/${genre.toLowerCase}`}
+                  className="self-center w-[0.5em] m-[5px] flex-grow-1 flex-shrink-0 basis-[28%]"
+                >
+                  <li>{genre}</li>
+                </Link>
+              ))}
+            </ul>
+          </div>
         </li>
         <Link to="/movies">
           <li className="text-white cursor-pointer mr-2">Movies</li>

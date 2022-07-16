@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Player from "./Player";
 import SimilarMoviesRow from "./SimilarMoviesRow";
-import { genres } from "../genres";
+import { mergedGenres } from "../genres";
 
 const MovieInfo = ({
   setShowModal,
@@ -14,7 +14,7 @@ const MovieInfo = ({
   const [casts, setCasts] = useState([]);
   const [trailer, setTrailer] = useState([]);
 
-  const filteredGenre = genres.filter((element) =>
+  const filteredGenre = mergedGenres.filter((element) =>
     showModal?.genre_ids.includes(element.id)
   );
 

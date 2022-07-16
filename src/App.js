@@ -8,6 +8,8 @@ import Movies from "./pages/Movies";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import TVSeries from "./pages/TVSeries";
+import { filteredAllGenres } from "./genres";
+import Genre from "./pages/Genre";
 
 function App() {
   return (
@@ -28,6 +30,12 @@ function App() {
           />
           <Route path="/movies" element={<Movies />} />
           <Route path="/tvseries" element={<TVSeries />} />
+          {filteredAllGenres.map((genre) => (
+            <Route
+              path={`/${genre.toLowerCase}`}
+              element={<Genre genre={genre} />}
+            />
+          ))}
         </Routes>
       </AuthContextProvider>
     </>

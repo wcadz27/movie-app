@@ -61,16 +61,19 @@ const Navbar = () => {
         </Link>
         <li className="flex flex-col text-white cursor-pointer ml-2 mr-2">
           <p className="peer">Genre</p>
-          <div className="absolute hidden peer-hover:flex hover:flex w-[600px]">
-            <ul className="w-[500px] flex gap-3 flex-wrap bg-gray-800 mt-[1.75rem] p-[2rem]">
-              {filteredAllGenres.map((genre, index) => (
-                <Link
-                  to={`/${genre.toLowerCase}`}
-                  className="self-center w-[0.5em] m-[5px] flex-grow-1 flex-shrink-0 basis-[28%]"
-                >
-                  <li>{genre}</li>
-                </Link>
-              ))}
+          <div className="absolute hidden peer-hover:flex hover:flex w-[800px]">
+            <ul className="justify-center w-[800px] bg-gray-800 mt-[1.75rem] py-[1.2em]">
+              <div className="ml-[5%] w-[700px] flex flex-wrap">
+                {filteredAllGenres.map((genre, id) => (
+                  <Link
+                    to={`/${genre.toLowerCase}`}
+                    className="basis-1/3 p-[1em] hover:bg-gray-900"
+                    key={id}
+                  >
+                    <li>{genre}</li>
+                  </Link>
+                ))}
+              </div>
             </ul>
           </div>
         </li>

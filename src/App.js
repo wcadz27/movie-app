@@ -8,7 +8,7 @@ import Movies from "./pages/Movies";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import TVSeries from "./pages/TVSeries";
-import { filteredAllGenres } from "./genres";
+import { mergedGenres } from "./genres";
 import Genre from "./pages/Genre";
 
 function App() {
@@ -30,9 +30,12 @@ function App() {
           />
           <Route path="/movies" element={<Movies />} />
           <Route path="/tvseries" element={<TVSeries />} />
-          {filteredAllGenres.map((genre) => (
+          {mergedGenres.map((genre) => (
             <Route
-              path={`/${genre.toLowerCase}`}
+              path={`/genre/${genre.name
+                .toLowerCase()
+                .replace(/\s/g, "")
+                .replace(/\W+/g, "-")}`}
               element={<Genre genre={genre} />}
             />
           ))}

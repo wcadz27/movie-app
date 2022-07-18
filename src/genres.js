@@ -274,3 +274,26 @@ const allGenres = Object.keys(genres.movies)
 export const filteredAllGenres = allGenres.filter((g, index) => {
   return allGenres.indexOf(g) === index;
 });
+
+const tvSeriesGenresIDs = Object.keys(genres.tvSeries).map(
+  (x, index) => genres.tvSeries[index].id
+);
+
+const moviesGenresIDs = Object.keys(genres.movies).map(
+  (x, index) => genres.movies[index].id
+);
+
+export const genreChecker = (genreID) => {
+  const isMovie = moviesGenresIDs.includes(genreID);
+  const isTVSeries = tvSeriesGenresIDs.includes(genreID);
+
+  if (isMovie && isTVSeries) {
+    return "isBoth";
+  } else if (!isMovie && isTVSeries) {
+    return "isTVSeries";
+  } else if (isMovie && !isTVSeries) {
+    return "isMovie";
+  }
+};
+
+export let genreType = "";

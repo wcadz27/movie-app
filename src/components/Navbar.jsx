@@ -66,7 +66,10 @@ const Navbar = () => {
               <div className="ml-[5%] w-[700px] flex flex-wrap">
                 {filteredAllGenres.map((genre, id) => (
                   <Link
-                    to={`/${genre.toLowerCase}`}
+                    to={`/genre/${genre
+                      .toLowerCase()
+                      .replace(/\s/g, "")
+                      .replace(/\W+/g, "-")}`}
                     className="basis-1/3 p-[1em] hover:bg-gray-900"
                     key={id}
                   >

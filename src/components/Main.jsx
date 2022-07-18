@@ -9,13 +9,13 @@ const Main = ({ setShowModal, randomPopularMovie }) => {
         <div className="absolute w-full h-[550px] bg-gradient-to-r from-black"></div>
         <img
           src={`https://image.tmdb.org/t/p/original/${randomPopularMovie?.backdrop_path}`}
-          alt={randomPopularMovie?.title}
+          alt={randomPopularMovie?.title || randomPopularMovie?.name}
           className="w-full h-full object-cover"
         />
       </div>
       <div className="absolute w-full p-4 md:pd-8">
         <h1 className="text-3xl md:text-5xl font-bold">
-          {randomPopularMovie?.title}
+          {randomPopularMovie?.title || randomPopularMovie?.name}
         </h1>
         <div>
           <button
@@ -29,7 +29,9 @@ const Main = ({ setShowModal, randomPopularMovie }) => {
             More info
           </button>
           <p className="my-2 text-gray-400 text-sm">
-            Released: {randomPopularMovie?.release_date}
+            Released:{" "}
+            {randomPopularMovie?.release_date ||
+              randomPopularMovie?.first_air_date}
           </p>
           <p className="sm:w-[85%] sm:text-xs md:text-base lg:text-lg md:w-[65%] lg:w-[50%]">
             {randomPopularMovie?.overview}

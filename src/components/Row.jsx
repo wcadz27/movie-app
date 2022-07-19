@@ -12,7 +12,7 @@ const Row = ({ title, fetchURL, rowID, setShowModal }) => {
     });
   }, [fetchURL]);
 
-  console.log(fetchURL);
+  console.log(movies);
 
   const slideLeft = () => {
     var slider = document.getElementById("slider" + rowID);

@@ -28,8 +28,6 @@ const Home = () => {
     });
   }, []);
 
-  console.log(showModal);
-
   return (
     <>
       <Main

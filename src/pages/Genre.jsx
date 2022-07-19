@@ -6,16 +6,17 @@ import Row from "../components/Row";
 import {
   requests,
   key,
-  tvSeriesRequests,
   requestGenre,
-  requestTvGenres,
-  requestMovieGenres,
+  requestGenreMovieRow,
+  requestGenreMovieRowV2,
 } from "../Requests";
-import { genreChecker, genreType } from "../genres";
+import { genreChecker } from "../genres";
 
 const Genre = ({ genre }) => {
   const [showModal, setShowModal] = useState(undefined);
   const [movies, setMovies] = useState([]);
+
+  const [testMovies, setTestMovies] = useState([]);
 
   const castsRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/credits?api_key=${key}&language=en-US`;
   const trailerRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/videos?api_key=${key}&language=en-US`;
@@ -24,16 +25,8 @@ const Genre = ({ genre }) => {
   //Select movie in random so main page displays a different popular movie everytime the page loads
   const randomPopularMovie = movies[Math.floor(Math.random() * movies.length)];
 
-  const tvSeriesTitles = [
-    "Popular TV Series",
-    "Top Rated TV Series",
-    "On Going TV Series",
-  ];
-
   const genreType = genreChecker(genre.id);
-  const requestGenreURL = requestGenre(genreType, genre.id);
-
-  console.log(requestGenreURL);
+  const requestGenreURL = requestGenre("upcoming", genreType, genre.id);
 
   useEffect(() => {
     if (genreType === "isBoth") {
@@ -55,11 +48,15 @@ const Genre = ({ genre }) => {
         setMovies(response.data.results);
       });
     }
-  }, []);
+  }, [genreType]);
 
-  console.log(requestGenreURL);
-  console.log(genreType);
   console.log(movies);
+
+  /* useEffect(() => {
+    axios.get(requests.requestPopular).then((response) => {
+      setTestMovies(response.data.results);
+    });
+  }, []); */
 
   return (
     <>

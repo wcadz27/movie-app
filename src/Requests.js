@@ -23,60 +23,60 @@ export const tvSeriesRequests = {
 export function requestGenre(selection, show, genreID) {
   if (show === "isTVSeries") {
     switch (selection) {
-      case "popular":
+      case "Popular":
         return `https://api.themoviedb.org/3/discover/tv?api_key=${key}&sort_by=popularity.desc&with_genres=${genreID}`;
 
-      case "top rated":
+      case "Top rated":
         return `https://api.themoviedb.org/3/discover/tv?api_key=${key}&sort_by=vote_average.desc&with_genres=${genreID}`;
 
-      case "new releases":
+      case "New Releases":
         return `https://api.themoviedb.org/3/discover/tv?api_key=${key}&first_air_date.desc&first_air_date.lte=${utc}&with_genres=${genreID}`;
 
-      case "upcoming":
-        return `https://api.themoviedb.org/3/discover/tv?api_key=${key}&first_air_date.desc&first_air_date.gte=${utc}&with_genres=${genreID}`;
+      case "Upcoming":
+        return `https://api.themoviedb.org/3/discover/tv?api_key=${key}&first_air_date.asc&first_air_date.gte=${utc}&with_genres=${genreID}`;
       default:
         console.log(selection);
     }
   } else if (show === "isMovie") {
     switch (selection) {
-      case "popular":
+      case "Popular":
         return `https://api.themoviedb.org/3/discover/movie?api_key=${key}&sort_by=popularity.desc&with_genres=${genreID}`;
 
-      case "top rated":
+      case "Top Rated":
         return `https://api.themoviedb.org/3/discover/movie?api_key=${key}&sort_by=vote_average.desc&with_genres=${genreID}`;
 
-      case "new releases":
-        return `https://api.themoviedb.org/3/discover/movie?api_key=${key}&release_date.desc&release_date.lte=${utc}&with_genres=${genreID}`;
+      case "New Releases":
+        return `https://api.themoviedb.org/3/discover/movie?api_key=${key}&primary_release_date.desc&primary_release_date.lte=${utc}&with_genres=${genreID}`;
 
-      case "upcoming":
-        return `https://api.themoviedb.org/3/discover/movie?api_key=${key}&release_date.desc&release_date.gte=${utc}&with_genres=${genreID}`;
+      case "Upcoming":
+        return `https://api.themoviedb.org/3/discover/movie?api_key=${key}&primary_release_date.asc&primary_release_date.gte=${utc}&with_genres=${genreID}`;
       default:
         console.log(selection);
     }
   } else {
     switch (selection) {
-      case "popular":
+      case "Popular":
         return [
           `https://api.themoviedb.org/3/discover/tv?api_key=${key}&sort_by=popularity.desc&with_genres=${genreID}`,
           `https://api.themoviedb.org/3/discover/movie?api_key=${key}&sort_by=popularity.desc&with_genres=${genreID}`,
         ];
 
-      case "top rated":
+      case "Top Rated":
         return [
           `https://api.themoviedb.org/3/discover/tv?api_key=${key}&sort_by=vote_average.desc&with_genres=${genreID}`,
           `https://api.themoviedb.org/3/discover/movie?api_key=${key}&sort_by=vote_average.desc&with_genres=${genreID}`,
         ];
 
-      case "new releases":
+      case "New Releases":
         return [
           `https://api.themoviedb.org/3/discover/tv?api_key=${key}&first_air_date.desc&first_air_date.lte=${utc}&with_genres=${genreID}`,
-          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&release_date.desc&release_date.lte=${utc}&with_genres=${genreID}`,
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&primary_release_date.desc&primary_release_date.lte=${utc}&with_genres=${genreID}`,
         ];
 
-      case "upcoming":
+      case "Upcoming":
         return [
-          `https://api.themoviedb.org/3/discover/tv?api_key=${key}&first_air_date.desc&first_air_date.gte=${utc}&with_genres=${genreID}`,
-          `https://api.themoviedb.org/3/discover/movie?api_key=315996079fecc53db34525c3ba61d34a&primary_release_date.asc&primary_release_date.gte=2022-07-19&with_genres=28`,
+          `https://api.themoviedb.org/3/discover/tv?api_key=${key}&first_air_date.asc&first_air_date.gte=${utc}&with_genres=${genreID}`,
+          `https://api.themoviedb.org/3/discover/movie?api_key=${key}&primary_release_date.asc&primary_release_date.gte=${utc}&with_genres=${genreID}`,
         ];
       default:
         console.log(selection);

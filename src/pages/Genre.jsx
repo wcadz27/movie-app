@@ -26,7 +26,7 @@ const Genre = ({ genre }) => {
   const randomPopularMovie = movies[Math.floor(Math.random() * movies.length)];
 
   const genreType = genreChecker(genre.id);
-  const requestGenreURL = requestGenre("upcoming", genreType, genre.id);
+  const requestGenreURL = requestGenre("Popular", genreType, genre.id);
 
   useEffect(() => {
     if (genreType === "isBoth") {
@@ -73,30 +73,16 @@ const Genre = ({ genre }) => {
           fetchSimilarMoviesURL={similarMoviesRequest}
         />
       ) : null}
-      <Row
-        setShowModal={setShowModal}
-        rowID="2"
-        title="Popular"
-        fetchURL={requests.requestPopular}
-      />
-      <Row
-        setShowModal={setShowModal}
-        rowID="1"
-        title="Upcoming"
-        fetchURL={requests.requestUpcoming}
-      />
-      <Row
-        setShowModal={setShowModal}
-        rowID="3"
-        title="Trending"
-        fetchURL={requests.requestTrending}
-      />
-      <Row
-        setShowModal={setShowModal}
-        rowID="4"
-        title="Top Rated"
-        fetchURL={requests.requestTopRated}
-      />
+      {["Popular", "Top Rated", "New Releases", "Upcoming"].map(
+        (genreRow, index) => (
+          <Row
+            setShowModal={setShowModal}
+            rowID={`${1 + index}`}
+            title={genreRow}
+            fetchURL={requestGenre(genreRow, genreType, genre.id)}
+          />
+        )
+      )}
     </>
   );
 };

@@ -46,7 +46,7 @@ const MovieInfo = ({
             </div>
             <img
               src={`https://image.tmdb.org/t/p/original//${showModal?.backdrop_path}`}
-              alt={showModal?.title}
+              alt={showModal?.title || showModal?.name}
               className="w-full h-full object-cover"
             />
           </div>
@@ -63,7 +63,7 @@ const MovieInfo = ({
             </div>
             <div className="ml-5 relative flex flex-col md:justify-center">
               <h1 className="text-4xl font-bold bottom-[20%] w-[50%]">
-                {showModal?.title}
+                {showModal?.title || showModal?.name}
               </h1>
               <ul className="flex mt-1 text-[0.5rem] 2xl:text-[0.85rem] gap-2">
                 {filteredGenre.map((genre) => (
@@ -74,10 +74,8 @@ const MovieInfo = ({
                 {console.log(showModal)}
               </ul>
               <p className="text-[0.25em] md:text-[0.5em] xl:text-[0.6em] 2xl:text-[0.85em] mt-2 mr-3 w-[40%] md:w-[40%]">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Veritatis est suscipit at dolore exercitationem? A ipsam itaque,
-                accusantium explicabo ad veritatis quasi! Necessitatibus
-                deserunt reiciendis similique! Quia molestiae minus nihil!
+                {showModal?.overview ||
+                  "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, hic perspiciatis? Doloremque ipsum obcaecati veniam laboriosam excepturi laudantium error porro, alias mollitia fugit corporis magnam ducimus animi doloribus. Doloremque, exercitationem."}
               </p>
             </div>
           </div>

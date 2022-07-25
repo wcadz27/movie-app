@@ -16,14 +16,9 @@ const Genre = ({ genre }) => {
   const [showModal, setShowModal] = useState(undefined);
   const [movies, setMovies] = useState([]);
 
-  const [testMovies, setTestMovies] = useState([]);
-
   const castsRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/credits?api_key=${key}&language=en-US`;
   const trailerRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/videos?api_key=${key}&language=en-US`;
   const similarMoviesRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/similar?api_key=${key}&language=en-US&page=1`;
-
-  //Select movie in random so main page displays a different popular movie everytime the page loads
-  const randomPopularMovie = movies[Math.floor(Math.random() * movies.length)];
 
   const genreType = genreChecker(genre.id);
   const requestGenreURL = requestGenre("Popular", genreType, genre.id);
@@ -50,8 +45,6 @@ const Genre = ({ genre }) => {
     }
   }, [genreType]);
 
-  console.log(movies);
-
   /* useEffect(() => {
     axios.get(requests.requestPopular).then((response) => {
       setTestMovies(response.data.results);
@@ -60,10 +53,8 @@ const Genre = ({ genre }) => {
 
   return (
     <>
-      <Main
-        setShowModal={setShowModal}
-        randomPopularMovie={randomPopularMovie}
-      />
+      <Main setShowModal={setShowModal} showsHero={movies.slice(0, 5)} />
+
       {showModal !== undefined ? (
         <MovieInfo
           setShowModal={setShowModal}

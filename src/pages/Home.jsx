@@ -13,9 +13,6 @@ const Home = () => {
   const trailerRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/videos?api_key=${key}&language=en-US`;
   const similarMoviesRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/similar?api_key=${key}&language=en-US&page=1`;
 
-  //Select movie in random so main page displays a different popular movie everytime the page loads
-  const randomPopularMovie = movies[Math.floor(Math.random() * movies.length)];
-
   const tvSeriesTitles = [
     "Popular TV Series",
     "Top Rated TV Series",
@@ -30,10 +27,7 @@ const Home = () => {
 
   return (
     <>
-      <Main
-        setShowModal={setShowModal}
-        randomPopularMovie={randomPopularMovie}
-      />
+      <Main setShowModal={setShowModal} showsHero={movies.slice(0, 5)} />
       {showModal !== undefined ? (
         <MovieInfo
           setShowModal={setShowModal}

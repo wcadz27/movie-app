@@ -10,12 +10,11 @@ import Signup from "./pages/Signup";
 import TVSeries from "./pages/TVSeries";
 import { mergedGenres } from "./genres";
 import Genre from "./pages/Genre";
-import Carousel from "./components/Carousel";
 
 function App() {
   return (
     <>
-      {/* <AuthContextProvider>
+      <AuthContextProvider>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -41,8 +40,7 @@ function App() {
             />
           ))}
         </Routes>
-      </AuthContextProvider> */}
-      <Carousel />
+      </AuthContextProvider>
     </>
   );
 }

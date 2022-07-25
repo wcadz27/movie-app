@@ -27,29 +27,34 @@ const Main = ({ setShowModal, showsHero }) => {
     <>
       <div className="relative w-full h-[550px] text-white flex">
         <div className="absolute w-full h-[550px] bg-gradient-to-r from-black z-10"></div>
-        <div className="absolute w-full h-full flex flex-col justify-center z-10 ml-3">
-          <h1 className="text-3xl md:text-5xl font-bold">
-            {showsHero[current]?.title || showsHero[current]?.name}
-          </h1>
-          <div>
-            <button
-              type="button"
-              onClick={() => setShowModal(showsHero[current])}
-              className="my-4 border text-white py-2 px-4 rounded-3xl border-blue-600 bg-blue-600 shadow-lg"
-            >
-              Watch trailer
-            </button>
-            <p className="my-2 text-gray-400 text-sm">
-              Released:{" "}
-              {showsHero[current]?.release_date ||
-                showsHero[current]?.first_air_date}
-            </p>
-            <p className="sm:w-[85%] sm:text-xs md:text-base lg:text-lg md:w-[65%] lg:w-[50%]">
-              {showsHero[current]?.overview ||
-                "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, hic perspiciatis? Doloremque ipsum obcaecati veniam laboriosam excepturi laudantium error porro, alias mollitia fugit corporis magnam ducimus animi doloribus. Doloremque, exercitationem."}
-            </p>
+        {showsHero.map((show, index) => (
+          <div
+            className={`${
+              index === current ? "opacity-100" : "opacity-0 scale-[1.08]"
+            } absolute w-full h-full flex flex-col justify-center z-10 ml-3 duration-1000 ease-in-out`}
+          >
+            <h1 className="text-3xl md:text-5xl font-bold">
+              {show?.title || show?.name}
+            </h1>
+            <div>
+              <button
+                type="button"
+                onClick={() => setShowModal(show)}
+                className="my-4 border text-white py-2 px-4 rounded-3xl border-blue-600 bg-blue-600 shadow-lg"
+              >
+                Watch trailer
+              </button>
+              <p className="my-2 text-gray-400 text-sm">
+                Released: {show?.release_date || show?.first_air_date}
+              </p>
+              <p className="sm:w-[85%] sm:text-xs md:text-base lg:text-lg md:w-[65%] lg:w-[50%]">
+                {show?.overview ||
+                  "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, hic perspiciatis? Doloremque ipsum obcaecati veniam laboriosam excepturi laudantium error porro, alias mollitia fugit corporis magnam ducimus animi doloribus. Doloremque, exercitationem."}
+              </p>
+            </div>
           </div>
-        </div>
+        ))}
+
         <div className="absolute h-[550px] w-full">
           <div className="flex absolute justify-center bottom-0 w-full mb-4 gap-3">
             {showsHero.map((show, index) => (

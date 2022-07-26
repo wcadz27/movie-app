@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { BsChevronDown } from "react-icons/bs";
@@ -16,8 +16,27 @@ const Navbar = () => {
     }
   };
 
+  const [fixedClass, setFixedClass] = useState("backdrop-blur-none");
+
+  useEffect(() => {
+    window.addEventListener("scroll", fixNavbar);
+
+    return () => {
+      window.removeEventListener("scroll", fixNavbar);
+    };
+  }, []);
+
+  const fixNavbar = () => {
+    if (window !== undefined) {
+      let windowHeight = window.scrollY;
+      windowHeight > 500
+        ? setFixedClass("backdrop-blur-sm")
+        : setFixedClass("backdrop-blur-none");
+    }
+  };
+
   return (
-    <div className="fixed flex p-4 w-full items-center z-[48] active:bg-black">
+    <div className={`fixed ${fixedClass} flex p-4 w-full items-center z-[48]`}>
       {/* Play icon goes in this line */}
       <Link to="/">
         <h1 className="text-blue-600 text-4xl font-bold cursor-pointer">

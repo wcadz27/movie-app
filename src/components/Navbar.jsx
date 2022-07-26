@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { BsChevronDown } from "react-icons/bs";
-import { genres, filteredAllGenres } from "../genres";
+import { filteredAllGenres } from "../genres";
 
 const Navbar = () => {
   const { user, logOut } = UserAuth();
@@ -16,27 +16,27 @@ const Navbar = () => {
     }
   };
 
-  const [fixedClass, setFixedClass] = useState("backdrop-blur-none");
+  const [blurClass, setBlurClass] = useState("backdrop-blur-none");
 
   useEffect(() => {
-    window.addEventListener("scroll", fixNavbar);
+    window.addEventListener("scroll", blurBGNavbar);
 
     return () => {
-      window.removeEventListener("scroll", fixNavbar);
+      window.removeEventListener("scroll", blurBGNavbar);
     };
   }, []);
 
-  const fixNavbar = () => {
+  const blurBGNavbar = () => {
     if (window !== undefined) {
       let windowHeight = window.scrollY;
       windowHeight > 500
-        ? setFixedClass("backdrop-blur-sm")
-        : setFixedClass("backdrop-blur-none");
+        ? setBlurClass("backdrop-blur-sm")
+        : setBlurClass("backdrop-blur-none");
     }
   };
 
   return (
-    <div className={`fixed ${fixedClass} flex p-4 w-full items-center z-[48]`}>
+    <div className={`fixed ${blurClass} flex p-4 w-full items-center z-[48]`}>
       {/* Play icon goes in this line */}
       <Link to="/">
         <h1 className="text-blue-600 text-4xl font-bold cursor-pointer">

@@ -11,14 +11,14 @@ const Main = ({ setShowModal, showsHero }) => {
     setCurrent(current === num ? current : num);
   };
 
-  /*   useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(
       () => setCurrent(current === length - 1 ? 0 : current + 1),
       delay
     );
     return () => clearTimeout(timer);
   }, [current]);
- */
+
   if (!Array.isArray(showsHero) || length <= 0) {
     return null;
   }
@@ -75,9 +75,9 @@ const Main = ({ setShowModal, showsHero }) => {
               key={index}
               className={`${
                 index === current
-                  ? "active duration-1000 opacity-100 scale-[1.08] 2xl:pb-[100%]"
+                  ? "active duration-1000 opacity-100 scale-[1.08] pb-[100%]"
                   : "opacity-0"
-              }  duration-1000 ease-in-out w-full text-white`}
+              } duration-1000 ease-in-out w-full text-white`}
             >
               {index === current && (
                 <img

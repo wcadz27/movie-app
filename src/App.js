@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import TVSeries from "./pages/TVSeries";
 import { mergedGenres } from "./genres";
 import Genre from "./pages/Genre";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             />
           ))}
         </Routes>
+        <Footer />
       </AuthContextProvider>
     </>
   );

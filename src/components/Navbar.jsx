@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
-import { BsChevronDown } from "react-icons/bs";
+import { BsChevronDown, BsSearch } from "react-icons/bs";
 import { filteredAllGenres } from "../genres";
+import axios from "axios";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const Navbar = () => {
+  const [searchInput, setSearchInput] = useState("");
+  const [showSearch, setShowSearch] = useState([]);
   const { user, logOut } = UserAuth();
   const navigate = useNavigate();
+
   const handleLogout = async () => {
     try {
       await logOut();
@@ -14,6 +20,23 @@ const Navbar = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const getMovies = async (searchValue) => {
+    let results = [];
+    setSearchInput(searchValue);
+    await axios
+      .get(
+        "https://api.themoviedb.org/3/search/movie?api_key=d80a54a0422d5fff6149c48741c8bece&language=en-US&query=" +
+          searchValue
+      )
+      .then((res) => {
+        results.push(...res.data.results.slice(0, 4));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setShowSearch(results);
   };
 
   const [blurClass, setBlurClass] = useState("backdrop-blur-none");
@@ -34,6 +57,20 @@ const Navbar = () => {
         : setBlurClass("backdrop-blur-none");
     }
   };
+
+  const progressColour = (rating) => {
+    if (rating < 2.5) {
+      return `red`;
+    } else if (rating < 6) {
+      return `yellow`;
+    } else if (rating < 8) {
+      return `blue`;
+    } else {
+      return `green`;
+    }
+  };
+
+  console.log(showSearch);
 
   return (
     <div className={`fixed ${blurClass} flex p-4 w-full items-center z-[48]`}>
@@ -71,6 +108,9 @@ const Navbar = () => {
                 TV Series
               </li>
             </Link>
+            <li className="border-2 p-2 font-semibold block pl-2 py-2 text-white cursor-pointer hover:bg-gray-400">
+              Search <BsSearch />
+            </li>
           </ul>
         </div>
       </div>
@@ -103,8 +143,53 @@ const Navbar = () => {
           <li className="text-white cursor-pointer mr-2">Movies</li>
         </Link>
         <Link to="/tvseries">
-          <li className="text-white cursor-pointer">TV Series</li>
+          <li className="mr-3 text-white cursor-pointer">TV Series</li>
         </Link>
+        <li className=" relative border-2 p-2 text-white font-semibold">
+          <div className="flex flex-col relative">
+            <div className="relative flex items-center w-full h-full">
+              <BsSearch className="cursor-pointer absolute right-0 mr-2" />
+              <input
+                className="ml-1 bg-transparent focus:outline-none"
+                type="text"
+                placeholder="Search Movies"
+                onChange={(event) => getMovies(event.target.value)}
+              />
+            </div>
+            <ul
+              className={`absolute ${
+                searchInput ? "block" : "hidden"
+              } h-[470px] w-[400px] bg-gray-600 mt-[20%] ml-[-5%] text-white overflow-y-scroll overflow-hidden gap-y-3 flex flex-col scroll-smooth`}
+            >
+              {showSearch.map((show) => (
+                <li className="w-full h-auto hover:border-y-2 hover:border-blue-600 hover:cursor-pointer">
+                  <div className="flex w-full h-full">
+                    <img
+                      className="h-auto w-[150px]"
+                      alt={`${show?.title}`}
+                      src={`https://image.tmdb.org/t/p/original/${show?.poster_path}`}
+                    />
+                    <div className="w-full h-full flex flex-col items-center mt-[2rem] gap-2">
+                      <h2>{show.title || show.name}</h2>
+                      <p>Released: {show.release_date}</p>
+                      <CircularProgressbar
+                        className="w-[5rem] h-[5rem]"
+                        value={show.vote_average}
+                        maxValue={10}
+                        text={`${show.vote_average * 10}%`}
+                        styles={buildStyles({
+                          pathColor: `${progressColour(show.vote_average)}`,
+                          textColor: `${progressColour(show.vote_average)}`,
+                        })}
+                      />
+                    </div>
+                    <div></div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </li>
       </ul>
       {user?.email ? (
         <div className="ml-auto">

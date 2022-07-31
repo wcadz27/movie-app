@@ -1,6 +1,4 @@
 import React, { useState, useRef } from "react";
-import "./Contact.scss";
-import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 const Contact = () => {
@@ -10,10 +8,9 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs
       .sendForm(
-        "service_itzmjqi",
+        "service_movie-app",
         "template_vw0rqka",
         form.current,
         "EjeM7F-WQj_UN2pUB"
@@ -31,64 +28,34 @@ const Contact = () => {
   };
 
   return (
-    <div>
-      <h1>Contact Us</h1>
-      <div>
-        (!isFormSubmitted ? (
-        <form>
-          <div>
-            <input type="text" />
-            <input type="text" />
-            <input type="text" />
-            <button type="submit"></button>
-          </div>
-        </form>
-        ) : (<div>Thank you message!</div>))
-      </div>
-    </div>
-
-    /* <div className="app__contact-container app__flex" id="contact">
-      <div className="app__flex app__contact">
-        <motion.div
-          whileInView={{ y: [100, 0], opacity: [0, 1] }}
-          transition={{ duration: 0.5 }}
-          className="app__flex app__contact-header"
-          viewport={{ once: true }}
-        >
-          <h1 className="app__contact-heading header-highlight">Contact</h1>
-          <p className="p-text">
-            Want to have a conversation or work together? Leave your details and
-            I'll get back to you as soon as I can.
-          </p>
-        </motion.div>
-        {!isFormSubmitted ? (
-          <motion.div
-            whileInView={{ y: [100, 0], opacity: [0, 1] }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="app__contact-form-container app__flex"
-          >
-            <form className="app__flex" onSubmit={sendEmail} ref={form}>
-              <div className="input-container">
+    <div className="relative h-[50vw] w-full flex justify-center items-center">
+      <div className="bg-gray-200 w-[800px] h-[500px] rounded-xl p-[2em]">
+        <h1 className="text-black text-3xl font-bold mb-[1.5em] bg-blue-500 inline-block p-2 rounded-lg">
+          Contact Us
+        </h1>
+        <div className="flex justify-center w-full gap-x-[2em]">
+          {!isFormSubmitted ? (
+            <form className="inline-block" onSubmit={sendEmail} ref={form}>
+              <div className="flex flex-col gap-y-[1em] w-[350px]">
                 <input
-                  className="p-text sender-name"
+                  className=" border-gray-300 outline-gray-800 border-2 rounded-md pl-3 py-2"
                   type="text"
                   placeholder="Name"
                   name="sender-name"
                 />
                 <input
-                  className="p-text sender-email"
+                  className=" border-gray-300 outline-gray-800 border-2 rounded-md pl-3 py-2"
                   type="text"
                   placeholder="Email"
                   name="sender-email"
                 />
-                <input
-                  className="p-text sender-message"
+                <textarea
+                  className=" border-gray-300 outline-gray-800 border-2 rounded-md pl-3 h-[6em] pt-2"
                   placeholder="Message"
                   name="message"
                 />
                 <button
-                  className="contact-button p-text"
+                  className="bg-blue-600 text-white py-2 rounded-md"
                   type="submit"
                   value="Send"
                 >
@@ -96,17 +63,17 @@ const Contact = () => {
                 </button>
               </div>
             </form>
-          </motion.div>
-        ) : (
-          <div>
-            <h3 className="email-sent-message p-text">
-              Thank you for getting in touch! I'll get back to you as soon as I
-              can.
-            </h3>
-          </div>
-        )}
+          ) : (
+            <div>
+              <h3 className="text-black ">
+                Thank you for getting in touch! I'll get back to you as soon as
+                I can.
+              </h3>
+            </div>
+          )}
+        </div>
       </div>
-    </div> */
+    </div>
   );
 };
 

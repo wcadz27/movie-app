@@ -24,15 +24,13 @@ const Footer = () => {
                   Home
                 </li>
               </Link>
-              {["Contact", "Terms and Conditions", "About"].map(
-                (link, index) => (
-                  <Link to={`${link.toLowerCase().replace(" ", "")}`}>
-                    <li className="w-[50%] inline-block list-none cursor-pointer">
-                      {link}
-                    </li>
-                  </Link>
-                )
-              )}
+              {["Contact", "Terms and Conditions"].map((link, index) => (
+                <Link to={`${link.toLowerCase().replace(/\s/g, "")}`}>
+                  <li className="w-[50%] inline-block list-none cursor-pointer">
+                    {link}
+                  </li>
+                </Link>
+              ))}
             </ul>
             <ul className="flex flex-col gap-y-4">
               <li className="p-0 inline-block list-none cursor-pointer relative">

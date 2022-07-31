@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { BsChevronDown, BsSearch } from "react-icons/bs";
@@ -12,6 +12,7 @@ const Navbar = () => {
   const [showSearch, setShowSearch] = useState([]);
   const { user, logOut } = UserAuth();
   const navigate = useNavigate();
+  const queryRef = useRef(null);
 
   const handleLogout = async () => {
     try {
@@ -60,17 +61,17 @@ const Navbar = () => {
 
   const progressColour = (rating) => {
     if (rating < 2.5) {
-      return `red`;
+      return `#ef4444`;
     } else if (rating < 6) {
-      return `yellow`;
+      return `#eab308`;
     } else if (rating < 8) {
-      return `blue`;
+      return `#3b82f6`;
     } else {
-      return `green`;
+      return `#22c55e`;
     }
   };
 
-  console.log(showSearch);
+  console.log();
 
   return (
     <div className={`fixed ${blurClass} flex p-4 w-full items-center z-[48]`}>
@@ -147,15 +148,26 @@ const Navbar = () => {
         </Link>
         <li className=" relative border-2 p-2 text-white font-semibold">
           <div className="flex flex-col relative">
-            <div className="relative flex items-center w-full h-full">
-              <BsSearch className="cursor-pointer absolute right-0 mr-2" />
+            <form className="relative flex items-center w-full h-full">
+              <Link
+                to={{ pathname: "/search/" + searchInput }}
+                className="cursor-pointer h-full flex absolute right-0 mr-2"
+              >
+                <button type="submit" onClick={() => setSearchInput(() => "")}>
+                  <BsSearch />
+                </button>
+              </Link>
               <input
                 className="ml-1 bg-transparent focus:outline-none"
                 type="text"
-                placeholder="Search Movies"
-                onChange={(event) => getMovies(event.target.value)}
+                placeholder="Enter keywords.."
+                onChange={(event) =>
+                  getMovies(event.target.value.toLowerCase())
+                }
+                ref={queryRef}
+                value={searchInput}
               />
-            </div>
+            </form>
             <ul
               className={`absolute ${
                 searchInput ? "block" : "hidden"

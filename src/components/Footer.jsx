@@ -56,7 +56,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </li>
-              {["TV Series", "Movies", "Search"].map((link, index) => (
+              {["TV Series", "Movies"].map((link, index) => (
                 <Link to={`${link.toLowerCase().replace(" ", "")}`}>
                   <li className="p-0 inline-block list-none cursor-pointer">
                     {link}

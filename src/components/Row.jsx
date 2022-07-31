@@ -26,7 +26,9 @@ const Row = ({ title, fetchURL, rowID, setShowModal }) => {
 
   return (
     <>
-      <h2 className="text-white font-bold md:text-xl p-4">{title}</h2>
+      <h2 className="text-white font-bold md:text-xl 2xl:text-3xl p-4">
+        {title}
+      </h2>
       <div
         className="relative group w-full h-auto"
         /* className="flex" */

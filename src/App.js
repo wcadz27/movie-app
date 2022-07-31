@@ -11,6 +11,8 @@ import TVSeries from "./pages/TVSeries";
 import { mergedGenres } from "./genres";
 import Genre from "./pages/Genre";
 import Footer from "./components/Footer";
+import Results from "./pages/Results";
+import Error from "./pages/Error";
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
               element={<Genre genre={genre} />}
             />
           ))}
+          <Route path="/search/:input" element={<Results />} />
+          <Route path="*" element={<Error />} />
         </Routes>
         <Footer />
       </AuthContextProvider>

@@ -20,9 +20,16 @@ const Home = () => {
   ];
 
   useEffect(() => {
-    axios.get(requests.requestPopular).then((response) => {
-      setMovies(response.data.results);
-    });
+    const fetchPopularMovies = async () => {
+      try {
+        await axios.get(requests.requestPopular).then((response) => {
+          setMovies(response.data.results);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchPopularMovies();
   }, []);
 
   return (

@@ -25,8 +25,8 @@ const Main = ({ setShowModal, showsHero }) => {
 
   return (
     <>
-      <div className="relative w-full h-[550px] 2xl:h-[800px] text-white flex overflow-hidden">
-        <div className="absolute w-full h-[800px] bg-gradient-to-r from-black z-10"></div>
+      <div className="relative w-full h-[550px] 2xl:h-[650px] text-white flex overflow-hidden">
+        <div className="absolute w-full h-[550px] 2xl:h-[650px] bg-gradient-to-r from-black z-10"></div>
         {showsHero.map((show, index) => (
           <div
             className={`${
@@ -69,7 +69,7 @@ const Main = ({ setShowModal, showsHero }) => {
           ))}
         </div>
 
-        <div className="absolute h-[550px] 2xl:h-[800px] w-full">
+        <div className="absolute h-[550px] 2xl:h-[650px] w-full">
           {showsHero.map((movie, index) => (
             <div
               key={index}

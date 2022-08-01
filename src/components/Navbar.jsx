@@ -77,8 +77,8 @@ const Navbar = () => {
     <div className={`fixed ${blurClass} flex p-4 w-full items-center z-[48]`}>
       {/* Play icon goes in this line */}
       <Link to="/">
-        <h1 className="text-blue-600 text-4xl font-bold cursor-pointer">
-          bbMovies
+        <h1 className="text-blue-600 text-4xl 2xl:text-5xl font-extrabold cursor-pointer">
+          MovieTime
         </h1>
       </Link>
       <div className="group relative dropdown ml-5 md:hidden cursor-pointer tracking-wide text-white">
@@ -97,7 +97,6 @@ const Navbar = () => {
             </Link>
             <li className="block pl-2 py-2 text-white cursor-pointer my-2 hover:bg-gray-400">
               <p>Genre</p>
-              <div className=""></div>
             </li>
             <Link to="/movies">
               <li className="block pl-2 py-2 text-white cursor-pointer my-2 hover:bg-gray-400">
@@ -115,7 +114,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <ul className="items-center ml-6 hidden md:flex">
+      <ul className="items-center ml-6 hidden md:flex 2xl:text-xl">
         <Link to="/">
           <li className="text-white cursor-pointer">Home</li>
         </Link>
@@ -216,7 +215,7 @@ const Navbar = () => {
           </button>
         </div>
       ) : (
-        <div className="ml-auto">
+        <div className="ml-auto 2xl:text-xl">
           <Link to="/signin">
             <button className="text-white cursor-pointer mr-2">Sign In</button>
           </Link>

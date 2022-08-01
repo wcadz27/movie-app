@@ -16,9 +16,16 @@ const Movies = () => {
   //Select movie in random so main page displays a different popular movie everytime the page loads
 
   useEffect(() => {
-    axios.get(requests.requestPopular).then((response) => {
-      setMovies(response.data.results);
-    });
+    const fetchPopularMovies = async () => {
+      try {
+        axios.get(requests.requestPopular).then((response) => {
+          setMovies(response.data.results);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchPopularMovies();
   }, []);
 
   return (

@@ -14,9 +14,16 @@ const TVSeries = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get(tvSeriesRequests.requestPopular).then((response) => {
-      setMovies(response.data.results);
-    });
+    const fetchPopularShows = async () => {
+      try {
+        axios.get(tvSeriesRequests.requestPopular).then((response) => {
+          setMovies(response.data.results);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchPopularShows();
   }, []);
 
   return (

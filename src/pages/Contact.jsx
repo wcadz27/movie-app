@@ -29,11 +29,11 @@ const Contact = () => {
 
   return (
     <div className="relative h-[50vw] w-full flex justify-center items-center">
-      <div className="bg-gray-200 w-[800px] h-[500px] rounded-xl p-[2em]">
+      <div className="bg-gray-200 w-full h-[800px] p-[2em]">
         <h1 className="text-black text-3xl font-bold mb-[1.5em] bg-blue-500 inline-block p-2 rounded-lg">
           Contact Us
         </h1>
-        <div className="flex justify-center w-full gap-x-[2em]">
+        <div className="flex w-full gap-x-[2em]">
           {!isFormSubmitted ? (
             <form className="inline-block" onSubmit={sendEmail} ref={form}>
               <div className="flex flex-col gap-y-[1em] w-[350px]">

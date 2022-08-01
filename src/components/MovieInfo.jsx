@@ -19,24 +19,31 @@ const MovieInfo = ({
   );
 
   useEffect(() => {
-    axios.get(fetchCastsURL).then((response) => {
-      setCasts(response.data.cast);
-    });
-    axios.get(fetchTrailerURL).then((response) => {
-      setTrailer(
-        response.data.results.filter((el) => {
-          return el.type === "Trailer";
-        })
-      );
-    });
+    const fetchURLs = async () => {
+      try {
+        await axios.get(fetchCastsURL).then((response) => {
+          setCasts(response.data.cast);
+        });
+        await axios.get(fetchTrailerURL).then((response) => {
+          setTrailer(
+            response.data.results.filter((el) => {
+              return el.type === "Trailer";
+            })
+          );
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchURLs();
   }, [fetchCastsURL, fetchTrailerURL]);
 
   return (
     <>
       <div className="fixed z-50 inset-0 md:my-5 w-full h-auto md:w-[95%] overflow-y-auto overflow-x-hidden scrollbar-hide outline-none focus:outline-none mx-auto bg-black">
-        <div className="w-full h-auto md:h-[600px] text-white flex">
+        <div className="w-full h-auto md:h-[600px] 2xl:h-[750px] text-white flex">
           <div className="w-full h-full">
-            <div className="absolute w-full h-full md:h-[600px] bg-gradient-to-t from-black ">
+            <div className="absolute w-full h-full md:h-[600px] 2xl:h-[750px] bg-gradient-to-t from-black ">
               <button
                 className="absolute top-0 right-0 text-white bg-blue-600 mr-4 mt-4 text-[0.6rem]"
                 onClick={() => setShowModal(undefined)}
@@ -53,7 +60,7 @@ const MovieInfo = ({
         </div>
 
         <div className="absolute flex flex-col w-full ml-2 text-white top-[11rem] h-auto pb-3">
-          <div className="w-full h-full md:ml-[20%] lg:ml-[25%] md:mt-[-5%] md:flex">
+          <div className="w-full h-full md:ml-[20%] lg:ml-[25%] md:mt-[-5%] 2xl:mt-[-1%] md:flex">
             <div className="hidden md:block w-[20%] max-w-[270px]">
               <img
                 className="w-full h-auto object-cover"

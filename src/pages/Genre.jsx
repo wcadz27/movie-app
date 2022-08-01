@@ -24,25 +24,32 @@ const Genre = ({ genre }) => {
   const requestGenreURL = requestGenre("Popular", genreType, genre.id);
 
   useEffect(() => {
-    if (genreType === "isBoth") {
-      const requestOne = axios.get(requestGenreURL[0]);
-      const requestTwo = axios.get(requestGenreURL[1]);
-      axios
-        .all([requestOne, requestTwo])
-        .then(
-          axios.spread((...responses) => {
-            setMovies(responses[0].data.results);
-            movies.concat(responses[1].data.results);
-          })
-        )
-        .catch((errors) => {
-          console.log(errors);
-        });
-    } else {
-      axios.get(requestGenreURL).then((response) => {
-        setMovies(response.data.results);
-      });
-    }
+    const fetchShows = async () => {
+      try {
+        if (genreType === "isBoth") {
+          const requestOne = await axios.get(requestGenreURL[0]);
+          const requestTwo = await axios.get(requestGenreURL[1]);
+          await axios
+            .all([requestOne, requestTwo])
+            .then(
+              axios.spread((...responses) => {
+                setMovies(responses[0].data.results);
+                movies.concat(responses[1].data.results);
+              })
+            )
+            .catch((errors) => {
+              console.log(errors);
+            });
+        } else {
+          axios.get(requestGenreURL).then((response) => {
+            setMovies(response.data.results);
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchShows();
   }, [genreType]);
 
   /* useEffect(() => {

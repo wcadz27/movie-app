@@ -37,11 +37,11 @@ const Movie = ({ item, setShowModal }) => {
       <div></div>
       <div
         onClick={() => setShowModal(item)}
-        className="relative min-w-[180px] md:min-w-[220px] min-h-[260px] md:min-h-[320px] h-auto p-2"
+        className="relative w-[180px] md:min-w-[220px] min-h-[200px] md:min-h-[320px] h-auto p-2"
         /* className="flex w-full h-full cursor-pointer" */
       >
         <img
-          className="rounded-2xl cursor-pointer md:min-h-[320px] min-h-[260px] h-auto w-full"
+          className="rounded-2xl cursor-pointer md:min-h-[200px] min-h-[280px] w-full"
           src={`https://image.tmdb.org/t/p/w500/${item?.poster_path}`}
           alt={item?.title}
         />

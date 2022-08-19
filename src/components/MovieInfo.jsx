@@ -19,7 +19,10 @@ const MovieInfo = ({
   );
 
   useEffect(() => {
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
     const fetchURLs = async () => {
+      await sleep(4000);
       try {
         await axios.get(fetchCastsURL).then((response) => {
           setCasts(response.data.cast);
@@ -37,6 +40,8 @@ const MovieInfo = ({
     };
     fetchURLs();
   }, [fetchCastsURL, fetchTrailerURL]);
+
+  console.log(casts);
 
   return (
     <>

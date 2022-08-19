@@ -50,12 +50,6 @@ const Signup = () => {
                   placeholder="Password"
                   autoComplete="current-password"
                 />
-                <input
-                  className="p-3 my-2 rounded-lg focus:outline-blue-500"
-                  type="password"
-                  placeholder="Re-enter password"
-                  autoComplete="current-password"
-                />
                 <button
                   className="bg-blue-500 rounded-lg py-2 mt-10"
                   type="submit"

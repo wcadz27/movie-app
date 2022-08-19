@@ -7,9 +7,20 @@ const Row = ({ title, fetchURL, rowID, setShowModal }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get(fetchURL).then((response) => {
-      setMovies(response.data.results);
-    });
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    const fetchShows = async () => {
+      await sleep(2000 * rowID);
+      try {
+        axios.get(fetchURL).then((response) => {
+          setMovies(response.data.results);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchShows();
   }, [fetchURL]);
 
   console.log(movies);

@@ -15,10 +15,13 @@ const Results = () => {
   const similarMoviesRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/similar?api_key=${key}&language=en-US&page=1`;
 
   useEffect(() => {
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     const getMovies = async () => {
+      await sleep(2000);
+
       await axios
         .get(
-          "https://api.themoviedb.org/3/search/movie?api_key=d80a54a0422d5fff6149c48741c8bece&language=en-US&query=" +
+          `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=` +
             input
         )
         .then((res) => {

@@ -19,10 +19,21 @@ const SimilarMoviesRow = ({ fetchSimilarMoviesURL, setShowModal }) => {
   };
 
   useEffect(() => {
-    axios.get(fetchSimilarMoviesURL).then((res) => {
-      setSimilarMovies(res.data.results);
-    });
-  }, [fetchSimilarMoviesURL]);
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    const fetchSimilarShows = async () => {
+      await sleep(2000);
+      try {
+        await axios.get(fetchSimilarMoviesURL).then((res) => {
+          setSimilarMovies(res.data.results);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchSimilarShows();
+  }, []);
 
   return (
     <>

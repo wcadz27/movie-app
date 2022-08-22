@@ -3,7 +3,14 @@ import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
-const Row = ({ title, fetchURL, rowID, setShowModal }) => {
+const Row = ({
+  title,
+  fetchURL,
+  rowID,
+  setShowModal,
+  setShowType,
+  isTVSeries,
+}) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -55,7 +62,13 @@ const Row = ({ title, fetchURL, rowID, setShowModal }) => {
           className="relative flex w-full h-auto overflow-x-scroll scroll-smooth scrollbar-hide"
         >
           {movies.map((item, id) => (
-            <Movie setShowModal={setShowModal} key={id} item={item} />
+            <Movie
+              isTVSeries={isTVSeries}
+              setShowType={setShowType}
+              setShowModal={setShowModal}
+              key={id}
+              item={item}
+            />
           ))}
         </div>
         <MdChevronRight

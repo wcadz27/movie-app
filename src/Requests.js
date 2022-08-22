@@ -84,26 +84,21 @@ export function requestGenre(selection, show, genreID) {
   }
 }
 
-/* export function requestGenreMovieRow(showList, id) {
-  return showList.filter((show) => show.genre_ids.includes(id));
-} */
+export const showInfo = (showID, showType) => {
+  return showType === "movie"
+    ? [
+        `https://api.themoviedb.org/3/movie/${showID}/credits?api_key=${key}&language=en-US`,
+        `https://api.themoviedb.org/3/movie/${showID}/videos?api_key=${key}&language=en-US`,
+        `https://api.themoviedb.org/3/movie/${showID}/similar?api_key=${key}&language=en-US&page=1`,
+      ]
+    : [
+        `https://api.themoviedb.org/3/tv/${showID}/credits?api_key=${key}&language=en-US`,
+        `https://api.themoviedb.org/3/tv/${showID}/videos?api_key=${key}&language=en-US`,
+        `https://api.themoviedb.org/3/tv/${showID}/similar?api_key=${key}&language=en-US&page=1`,
+      ];
+};
 
-/* export function requestGenreMovieRowV2(selection, moviesArr, genreID) {
-  if (selection === "popular") {
-    for (let page = 1; moviesArr.length < 30; page++) {
-      axios
-        .get(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${page}`
-        )
-        .then((response) => {
-          moviesArr.push(
-            response.data.results.filter((show) =>
-              show.genre_ids.includes(genreID)
-            )
-          );
-        });
-    }
-  }
-} */
-
-/* https://api.themoviedb.org/3/movie/movie?api_key=${key}&language=en-US&query=horror&page=1&include_adult=false */
+/* const castsRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/credits?api_key=${key}&language=en-US`;
+const trailerRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/videos?api_key=${key}&language=en-US`;
+const similarMoviesRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/similar?api_key=${key}&language=en-US&page=1`;
+ */

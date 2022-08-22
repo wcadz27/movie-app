@@ -3,16 +3,13 @@ import React, { useEffect, useState } from "react";
 import Player from "./Player";
 import SimilarMoviesRow from "./SimilarMoviesRow";
 import { mergedGenres } from "../genres";
+import { showInfo } from "../Requests";
 
-const MovieInfo = ({
-  setShowModal,
-  showModal,
-  fetchCastsURL,
-  fetchTrailerURL,
-  fetchSimilarMoviesURL,
-}) => {
+const MovieInfo = ({ setShowModal, showModal, showType }) => {
   const [casts, setCasts] = useState([]);
   const [trailer, setTrailer] = useState([]);
+
+  const modalShowInfo = showInfo(showModal?.id, showType);
 
   const filteredGenre = mergedGenres.filter((element) =>
     showModal?.genre_ids.includes(element.id)
@@ -24,10 +21,10 @@ const MovieInfo = ({
     const fetchURLs = async () => {
       await sleep(4000);
       try {
-        await axios.get(fetchCastsURL).then((response) => {
+        await axios.get(modalShowInfo[0]).then((response) => {
           setCasts(response.data.cast);
         });
-        await axios.get(fetchTrailerURL).then((response) => {
+        await axios.get(modalShowInfo[1]).then((response) => {
           setTrailer(
             response.data.results.filter((el) => {
               return el.type === "Trailer";
@@ -39,7 +36,7 @@ const MovieInfo = ({
       }
     };
     fetchURLs();
-  }, [fetchCastsURL, fetchTrailerURL]);
+  }, []);
 
   console.log(casts);
 
@@ -122,7 +119,7 @@ const MovieInfo = ({
             </div>
           </div>
           <SimilarMoviesRow
-            fetchSimilarMoviesURL={fetchSimilarMoviesURL}
+            fetchSimilarMoviesURL={modalShowInfo[2]}
             setShowModal={setShowModal}
           />
         </div>

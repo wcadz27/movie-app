@@ -295,5 +295,3 @@ export const genreChecker = (genreID) => {
     return "isMovie";
   }
 };
-
-export let genreType = "";

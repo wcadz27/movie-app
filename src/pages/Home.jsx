@@ -3,15 +3,12 @@ import React, { useEffect, useState } from "react";
 import Main from "../components/Main";
 import MovieInfo from "../components/MovieInfo";
 import Row from "../components/Row";
-import { requests, key, tvSeriesRequests } from "../Requests";
+import { requests, tvSeriesRequests } from "../Requests";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(undefined);
+  const [showType, setShowType] = useState("");
   const [movies, setMovies] = useState([]);
-
-  const castsRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/credits?api_key=${key}&language=en-US`;
-  const trailerRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/videos?api_key=${key}&language=en-US`;
-  const similarMoviesRequest = `https://api.themoviedb.org/3/movie/${showModal?.id}/similar?api_key=${key}&language=en-US&page=1`;
 
   const tvSeriesTitles = [
     "Popular TV Series",
@@ -39,9 +36,7 @@ const Home = () => {
         <MovieInfo
           setShowModal={setShowModal}
           showModal={showModal}
-          fetchCastsURL={castsRequest}
-          fetchTrailerURL={trailerRequest}
-          fetchSimilarMoviesURL={similarMoviesRequest}
+          showType={showType}
         />
       ) : null}
       <Row
@@ -76,6 +71,8 @@ const Home = () => {
       />
       {Object.keys(tvSeriesRequests).map((el, index) => (
         <Row
+          isTVSeries={true}
+          setShowType={setShowType}
           setShowModal={setShowModal}
           rowID={`${index + 5}`}
           title={tvSeriesTitles[index]}

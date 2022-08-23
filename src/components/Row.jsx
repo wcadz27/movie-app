@@ -3,14 +3,7 @@ import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
-const Row = ({
-  title,
-  fetchURL,
-  rowID,
-  setShowModal,
-  setShowType,
-  isTVSeries,
-}) => {
+const Row = ({ title, fetchURL, rowID, setShowModal, setShowType }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -63,7 +56,6 @@ const Row = ({
         >
           {movies.map((item, id) => (
             <Movie
-              isTVSeries={isTVSeries}
               setShowType={setShowType}
               setShowModal={setShowModal}
               key={id}

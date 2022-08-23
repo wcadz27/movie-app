@@ -5,7 +5,7 @@ import SimilarMoviesRow from "./SimilarMoviesRow";
 import { mergedGenres } from "../genres";
 import { showInfo } from "../Requests";
 
-const MovieInfo = ({ setShowModal, showModal, showType }) => {
+const MovieInfo = ({ setShowModal, showModal, showType, setShowType }) => {
   const [casts, setCasts] = useState([]);
   const [trailer, setTrailer] = useState([]);
 
@@ -14,6 +14,9 @@ const MovieInfo = ({ setShowModal, showModal, showType }) => {
   const filteredGenre = mergedGenres.filter((element) =>
     showModal?.genre_ids.includes(element.id)
   );
+
+  console.log(modalShowInfo);
+  console.log(showType);
 
   useEffect(() => {
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -45,10 +48,13 @@ const MovieInfo = ({ setShowModal, showModal, showType }) => {
       <div className="fixed z-50 inset-0 md:my-5 w-full h-auto md:w-[95%] overflow-y-auto overflow-x-hidden scrollbar-hide outline-none focus:outline-none mx-auto bg-black">
         <div className="w-full h-auto md:h-[600px] 2xl:h-[750px] text-white flex">
           <div className="w-full h-full">
-            <div className="absolute w-full h-full md:h-[600px] 2xl:h-[750px] bg-gradient-to-t from-black ">
+            <div className="absolute w-full h-[500px] md:h-[600px] 2xl:h-[750px] bg-gradient-to-t from-black ">
               <button
                 className="absolute top-0 right-0 text-white bg-blue-600 mr-4 mt-4 text-[0.6rem]"
-                onClick={() => setShowModal(undefined)}
+                onClick={() => {
+                  setShowModal(undefined);
+                  setShowType("");
+                }}
               >
                 Close
               </button>

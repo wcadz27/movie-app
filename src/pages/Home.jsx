@@ -36,42 +36,47 @@ const Home = () => {
         <MovieInfo
           setShowModal={setShowModal}
           showModal={showModal}
+          setShowType={setShowType}
           showType={showType}
         />
       ) : null}
       <Row
         setShowModal={setShowModal}
+        setShowType={setShowType}
         rowID="2"
         title="Popular"
         fetchURL={requests.requestPopular}
       />
       <Row
         setShowModal={setShowModal}
+        setShowType={setShowType}
         rowID="1"
         title="Upcoming"
         fetchURL={requests.requestUpcoming}
       />
       <Row
         setShowModal={setShowModal}
+        setShowType={setShowType}
         rowID="3"
         title="Trending"
         fetchURL={requests.requestTrending}
       />
       <Row
         setShowModal={setShowModal}
+        setShowType={setShowType}
         rowID="4"
         title="Top Rated"
         fetchURL={requests.requestTopRated}
       />
       <Row
         setShowModal={setShowModal}
+        setShowType={setShowType}
         rowID="5"
         title="Horrors"
         fetchURL={requests.requestHorror}
       />
       {Object.keys(tvSeriesRequests).map((el, index) => (
         <Row
-          isTVSeries={true}
           setShowType={setShowType}
           setShowModal={setShowModal}
           rowID={`${index + 5}`}

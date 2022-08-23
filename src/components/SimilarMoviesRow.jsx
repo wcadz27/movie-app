@@ -37,7 +37,7 @@ const SimilarMoviesRow = ({ fetchSimilarMoviesURL, setShowModal }) => {
 
   return (
     <>
-      <h3 className="mb-3 text-[0.7rem] font-semibold md:text-[1.3em]">
+      <h3 className="mb-3 text-[0.7rem] 3xl:text-[2.5em] font-semibold md:text-[1.3em]">
         Similar shows
       </h3>
       <div className="group w-full h-auto">

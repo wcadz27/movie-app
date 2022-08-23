@@ -25,29 +25,29 @@ const Main = ({ setShowModal, showsHero }) => {
 
   return (
     <>
-      <div className="relative w-full h-[550px] 2xl:h-[650px] text-white flex overflow-hidden">
-        <div className="absolute w-full h-[550px] 2xl:h-[650px] bg-gradient-to-r from-black z-10"></div>
+      <div className="relative w-full h-[450px] xl:h-[650px] 3xl:h-[1100px] text-white flex overflow-hidden">
+        <div className="absolute w-full h-[450px] xl:h-[650px] 3xl:h-[1100px] bg-gradient-to-r from-black z-10"></div>
         {showsHero.map((show, index) => (
           <div
             className={`${
               index === current ? "opacity-100" : "opacity-0 scale-[1.08]"
             } absolute w-full h-full flex flex-col justify-center z-10 ml-3 duration-1000 ease-in-out`}
           >
-            <h1 className="text-xl xl:text-3xl 2xl:text-5xl md:text-5xl font-bold">
+            <h1 className="text-xl xl:text-3xl 2xl:text-6xl md:text-5xl font-bold">
               {show?.title || show?.name}
             </h1>
-            <div>
+            <div className="z-200">
               <button
                 type="button"
                 onClick={() => setShowModal(show)}
-                className="text-sm 2xl:text-2xl py-1 px-2 my-4 border text-white sm:py-2 sm:px-4 rounded-3xl border-blue-600 bg-blue-600 shadow-lg"
+                className="cursor-pointer text-sm 2xl:text-2xl 3xl:text-4xl py-1 px-2 my-4 border text-white sm:py-2 sm:px-4 rounded-3xl border-blue-600 bg-blue-600 shadow-lg"
               >
                 Watch trailer
               </button>
-              <p className="my-2 text-gray-400 text-xs sm:text-sm 2xl:text-lg">
+              <p className="my-2 text-gray-400 text-xs sm:text-sm 2xl:text-lg 3xl:text-3xl">
                 Released: {show?.release_date || show?.first_air_date}
               </p>
-              <p className="sm:w-[85%] text-[0.75em] sm:text-xs md:text-base lg:text-lg 2xl:text-xl md:w-[65%] lg:w-[50%]">
+              <p className="sm:w-[85%] text-[0.75em] sm:text-xs md:text-base lg:text-lg 2xl:text-xl 3xl:text-2xl md:w-[65%] lg:w-[50%]">
                 {show?.overview ||
                   "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto, hic perspiciatis? Doloremque ipsum obcaecati veniam laboriosam excepturi laudantium error porro, alias mollitia fugit corporis magnam ducimus animi doloribus. Doloremque, exercitationem."}
               </p>

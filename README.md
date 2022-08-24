@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# ![MovieTime](./README-assets/movie-app-image.png)
+# MovieTime - Movie Searching App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Movie and TV Series searching app created with ReactJS, Firebase, Tailwind and TMDB api. It helps finds user the movie they are looking for with keywords and they could find movies with genres. 
 
-## Available Scripts
+## Table of Contents
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Preview](#preview)
+* [Setup](#setup)
+* [Room for Improvement](#room-for-improvement)
+* [Acknowledgements](#acknowledgements)
+* [Contact](#contact)
 
-In the project directory, you can run:
+## Demo
 
-### `npm start`
+Live demo [here](https://movie-app-4fdd2.web.app)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## General Info
+My initial intention for this project is to replicate a simple front-end of most the popular streaming service app, Netflix, but I enjoyed working on it so I added more features. My goal for this project is to help users to find movies that they like with keywords and find movies and TV series with genres that they like. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Technologies Used
+ReactJS 18.1.0 - a front-end Javascript library used for building user interfaces for single-page applications
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Firebase 9.8.1 - a cloud-hosted NoSQL database that lets you store and sync data between your users in realtime
 
-### `npm run build`
+Tailwind - utility-first framework to help builders implement styles quicker
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+TMDB api v3 - movie and TV database that lets you find all movies and TV and know more about them
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Feature
+-By clicking on the movie that you like, you can watch a trailer to prepare you before you watch the actual movie
+-You can also see which actors are in the movie and similar movies that matches the genre of the movie
+-Home page and each genre page will show you popular, trending, upcoming movies and TV series titles
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Preview
+![Show info screenshot](./README-assets/show-modal.png)
+![Show info screenshot 2](./README-assets/show-modal-2.png)
+![Search page](./README-assets/Search-page.png)
 
-### `npm run eject`
+## Setup
+Clone this repo to your pc and run npm install to install all dependencies to get started with the project
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Room for Improvement
+Areas that could be improved in future development
+-Styles (more colours and UI design)
+-Fetching speed 
+-More cleaning in code
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Acknowledgements
+[This](https://github.com/fireclint/netflix-react-tailwind) and [this](https://github.com/trananhtuat/react-movie) repos help me to get started in my journey to build this project and I would like to thank them fully.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Contact
+Feel free to contact me on my [LinkedIn](https://www.linkedin.com/in/william-cadiz-83b541195/) and ask me anything. I'm a growing developer and feedbacks are like my food to get stronger and better developer!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

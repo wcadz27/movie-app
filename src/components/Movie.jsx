@@ -5,7 +5,7 @@ import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
-const Movie = ({ item, setShowModal, setShowType, isTVSeries }) => {
+const Movie = ({ item, setShowModal, setShowType }) => {
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
   const { user } = UserAuth();
@@ -37,7 +37,7 @@ const Movie = ({ item, setShowModal, setShowType, isTVSeries }) => {
       <div></div>
       <div
         onClick={
-          isTVSeries === true
+          item?.name
             ? () => {
                 setShowModal(item);
                 setShowType("tvSeries");

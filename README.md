@@ -53,7 +53,7 @@ Areas that could be improved in future development
 [This](https://github.com/fireclint/netflix-react-tailwind) and [this](https://github.com/trananhtuat/react-movie) repos help me to get started in my journey to build this project and I would like to thank them fully.
 
 ## Contact
-Feel free to contact me on my [LinkedIn](https://www.linkedin.com/in/william-cadiz-83b541195/) and ask me anything. I'm a growing developer and feedbacks are like my food to get stronger and better developer!
+Feel free to contact me on my [LinkedIn](https://www.linkedin.com/in/william-cadiz/) and ask me anything. I'm a growing developer and feedbacks are like my food to get stronger and better developer!
 
 
 
